@@ -157,7 +157,7 @@ public class Sistema {
             //Guardo los cambios segun los datos que pasan
             //Si estan vacios los Strings, guarda los datos que ya tenia
             this.getManagerDatos().guardarModificacionClienteEnArchivo();
-            if(this.getPaquetesPorCliente(unNombreNuevo).size() > 0){
+            if(!unNombreNuevo.equals(unNombreActual) &&  this.getPaquetesPorCliente(unNombreNuevo).size() > 0){
                 this.getManagerDatos().guardarModificacionPaqueteEnArchivo();
             }
             verifico = true;
@@ -196,7 +196,7 @@ public class Sistema {
             //Si estan vacios los Strings, guarda los datos que ya tenia
             this.getManagerDatos().guardarModificacionFuncionarioEnArchivo();
             
-            if(this.getEnviosPorFuncionario(unNombreNuevo).size() > 0){
+            if(!unNombreNuevo.equals(unNombreActual) && this.getEnviosPorFuncionario(unNombreNuevo).size() > 0){
                 this.getManagerDatos().guardarModificacionEnvioEnArchivo();
             }
             verifico = true;
