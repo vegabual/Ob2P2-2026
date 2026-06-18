@@ -31,7 +31,7 @@ AL ELEGIR AMARILLO, TIENEN QUE APARECER UNA LISTA CON LOS PAQUETES QUE TIENE Y S
 CUANDO SE CONFIRMA LA ENTREGA, SE LE AGREGAN DATOS DE LA RECEPCION Y SE PASAN A VERDE
 LOS QUE NO SE ENTREGARON SE PASAN A ESTADO "PENDIENTE" Y SIGUEN EN AMARILLO
 */
-public class Paquete {
+public class Paquete implements Comparable<Paquete>{
     
     private String id; //ALFANUMERICO Y SE DEBE VERIFICAR QUE SEA UNICO
     private Cliente cliente;
@@ -42,6 +42,7 @@ public class Paquete {
     private int peso; //en gramos
     private double precio; //debe ser calculado segun la tarifa del departamto los gramos ingresados
     private String estado; //QUEDA EN "PENDIENTE"
+    private String nombreZona;
     
     //<editor-fold desc="Getters and setters">
     //getters
@@ -80,62 +81,104 @@ public class Paquete {
     public String getEstado() {
         return estado;
     }
+
+    public String getNombreZona() {
+        return nombreZona;
+    }
     
     //Setters
-    public void setId(String id) {
+    private void setId(String id) {
         this.id = id;
     }
 
-    public void setCliente(Cliente cliente) {
+    private void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    public void setFechaIngreso(Fecha fechaIngreso) {
+    private void setFechaIngreso(Fecha fechaIngreso) {
         this.fechaIngreso = fechaIngreso;
     }
 
-    public void setDestinatario(String destinatario) {
+    private void setDestinatario(String destinatario) {
         this.destinatario = destinatario;
     }
 
-    public void setDireccion(String direccion) {
+    private void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
-    public void setDestino(String destino) {
+    private void setDestino(String destino) {
         this.destino = destino;
     }
 
-    public void setPeso(int peso) {
+    private void setPeso(int peso) {
         this.peso = peso;
     }
 
-    public void setPrecio(double precio) {
+    private void setPrecio(double precio) {
         this.precio = precio;
     }
 
     private void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public void setNombreZona(String nombreZona) {
+        this.nombreZona = nombreZona;
+    }
     //</editor-fold>
 
-    public Paquete(String id, Cliente cliente, Fecha fechaIngreso, String destinatario, String direccion, String destino, int peso) {
-        this.id = id;
-        this.cliente = cliente;
-        this.fechaIngreso = fechaIngreso;
-        this.destinatario = destinatario;
-        this.direccion = direccion;
-        this.destino = destino;
-        this.peso = peso;
-        this.estado = "PENDIENTE";
+    public Paquete(String id, Cliente cliente, Fecha fechaIngreso, String destinatario, String direccion, String destino, int peso, double precio, String nombreZona) {
+        this.setId(id);
+        this.setCliente(cliente);
+        this.setFechaIngreso(fechaIngreso);
+        this.setDestinatario(destinatario);
+        this.setDireccion(direccion);
+        this.setDestino(destino); 
+        this.setPeso(peso);
+        this.setPrecio(precio);
+        this.setNombreZona(nombreZona);
+        this.setEstado("PENDIENTE");
+    }
+    
+    public Paquete(String id, Cliente cliente, Fecha fechaIngreso, String destinatario, String direccion, String destino, int peso, double precio, String nombreZona, String estado) {
+        this.setId(id);
+        this.setCliente(cliente);
+        this.setFechaIngreso(fechaIngreso);
+        this.setDestinatario(destinatario);
+        this.setDireccion(direccion);
+        this.setDestino(destino); 
+        this.setPeso(peso);
+        this.setPrecio(precio);
+        this.setNombreZona(nombreZona);
+        this.setEstado(estado);
+    }
+    
+    public String aGuardar(){
+        return this.id + "--" + this.getCliente().getNombre() + "--" + this.getFechaIngreso() + "--" + this.getDestinatario() + "--" + this.getDireccion() + "--" + this.getDestino() + "--" + 
+                this.getPeso() + "--" + this.getPrecio() + "--" + this.getEstado() + "--" + this.getNombreZona();
+    }
+    
+    public void aEnviado(){
+        this.setEstado("ENVIADO");
+    }
+    
+    public void aPendiente(){
+        this.setEstado("PENDIENTE");
+    }
+    
+    public void aRecibido(){
+        this.setEstado("RECIBIDO");
     }
     
     @Override
     public String toString(){
-        String texto = this.id + "--" + this.getCliente().getNombre() + "--" + this.getFechaIngreso() + "--" + this.getDestinatario() + "--" + this.getDireccion() + "--" + this.getDestino() + "--" + 
-                this.getPeso() + "--" + this.getPrecio() + "--" + this.getEstado();
-        
-        return texto;
+        return "ID: " + this.id + ". De " + this.getCliente().getNombre() + " para " + this.getDestinatario();
+    }
+
+    @Override
+    public int compareTo(Paquete o) {
+        return this.id.compareTo(o.id);
     }
     
 }//Class

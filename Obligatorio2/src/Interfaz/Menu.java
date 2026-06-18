@@ -170,7 +170,14 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_Transacciones
 
     private void Envio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Envio
-        // LLAMA VENTANA DE ENVIOS
+        if(this.getSistema().getPaquetes().size() > 0 && this.getSistema().getFuncionarios().size() > 0){
+            VentanaIngresarEnvio nueva = new VentanaIngresarEnvio(sistema);
+            nueva.setVisible(true);       
+        } else if(this.getSistema().getFuncionarios().size() == 0) {
+            JOptionPane.showMessageDialog(this, "No se puede ingresar envio hasta no cargar al menos un funcionario.", "No hay funcionarios cargados", ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "No se puede ingresar envio hasta no cargar al menos un paquete.", "No hay paquetes cargados", ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_Envio
 
     private void Recepcion(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Recepcion

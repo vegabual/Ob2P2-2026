@@ -8,10 +8,12 @@ import Modelo.Cliente;
 import Modelo.Tarifa;
 import Modelo.Paquete;
 import Controladores.ManagerDatos;
+import Excepciones.ErrorCargaArchivoMalformado;
 import Modelo.Envio;
 import Modelo.Fecha;
 import Utils.Utils;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class Sistema {
@@ -85,6 +87,7 @@ public class Sistema {
         this.setFuncionarios(new ArrayList<Funcionario>());
         this.setPaquetes(new ArrayList<Paquete>());
         this.setTarifas(new ArrayList<Tarifa>());
+        this.setEnvios(new ArrayList<Envio>());
         this.setManagerDatos(new ManagerDatos(this.getClientes(), this.getFuncionarios(), this.getPaquetes(), this.getTarifas(), this.getEnvios()));
         //Se le pasa referencias a las listas de datos de clientes, funcionarios, tarifas y paquetes
     }
@@ -102,24 +105,9 @@ public class Sistema {
         this.getManagerDatos().inicializar(false); //Debe sobre escribir, no extender, por lo tanto ext debe ser false
     }
     
-    
-    /**
-     * Inicializar un sistema guardado
-     */
-    /*ORIGINAL
-    public void sistemaGuardado(){
-        this.getManagerDatos().inicializar(true); //Debe extender el archivo existente, por lo tanto ext debe ser true
-        
-    }*/
-    
-    //TODAVIA NO FUNCIONA BIEN
-    //////////////////////////////////////////////////////////
-    public void sistemaGuardado(){
-        
+    public void sistemaGuardado() throws ErrorCargaArchivoMalformado{
         this.getManagerDatos().inicializar(true);
-        
     }
-    ///////////////////////////////////////////////////////
     
     //Metodo para verificar que un nombre sea unico entre clientes y funcionarios
     private boolean verificoNombre(String unNombre){
@@ -134,6 +122,7 @@ public class Sistema {
         return verifico;
     }
     
+    //<editor-fold desc="Cliente">
     //Metodo de guardar cliente 
     public boolean guardarCliente(String unNombre, String unCelular, String unCorreo){
         
@@ -141,7 +130,7 @@ public class Sistema {
         
         if(verificoNombre(unNombre)){
            Cliente cliente = new Cliente(unNombre, unCelular, unCorreo);
-           this.getManagerDatos().guardarClienteEnArchivo(cliente);
+           this.getManagerDatos().guardarNuevoClienteEnArchivo(cliente);
            this.getClientes().add(cliente);
            verifico = true;
         }
@@ -167,25 +156,21 @@ public class Sistema {
             }
             //Guardo los cambios segun los datos que pasan
             //Si estan vacios los Strings, guarda los datos que ya tenia
-            this.getManagerDatos().guardarClienteEnArchivo(cliente);
+            this.getManagerDatos().guardarModificacionClienteEnArchivo();
+            if(this.getPaquetesPorCliente(unNombreNuevo).size() > 0){
+                this.getManagerDatos().guardarModificacionPaqueteEnArchivo();
+            }
             verifico = true;
         }
         return verifico;
     }
     
-    //Metodo de guardar funcionario 
-    public boolean guardarFuncionario(String unNombre, String unCelular, String unNumero, String unAnio){
-        
-        boolean verifico = false;
-        
-        if(verificoNombre(unNombre)){
-           Funcionario funcionario = new Funcionario(unNombre, unCelular, unNumero, unAnio);
-           this.getManagerDatos().guardarFuncionarioEnArchivo(funcionario);
-           this.getFuncionarios().add(funcionario);
-           verifico = true;
-        }
-        return verifico;
+    public Cliente encontrarCliente(String nombre){
+        return Utils.encontrarCliente(this.getClientes(), nombre);
     }
+    //</editor-fold>
+    
+    //<editor-fold desc="Funcionario">
     
     //Metodo de guardar funcionario modificado
     public boolean ModificarFuncionario(String unNombreActual, String unNombreNuevo, String unCelular, String unNumero, String unAnio){
@@ -209,29 +194,37 @@ public class Sistema {
             }
             //Guardo los cambios segun los datos que pasan
             //Si estan vacios los Strings, guarda los datos que ya tenia
-            this.getManagerDatos().guardarFuncionarioEnArchivo(funcionario);
+            this.getManagerDatos().guardarModificacionFuncionarioEnArchivo();
+            
+            if(this.getEnviosPorFuncionario(unNombreNuevo).size() > 0){
+                this.getManagerDatos().guardarModificacionEnvioEnArchivo();
+            }
             verifico = true;
         }
         return verifico;
     }
     
-    public Cliente encontrarCliente(String nombre){
-        return Utils.encontrarCliente(this.getClientes(), nombre);
-    }
-    
-    //<editor-fold desc="Paquetes">
-    public boolean agregarPaquete(String id, Cliente cliente, Fecha fecha,String destinatario, String direccion, String departamento, int peso){
-        boolean agregado = false;
-        if(Utils.encontrarPaquete(paquetes,id) == null){
-           Paquete paquete = new Paquete(id, cliente, fecha, destinatario, direccion, departamento, peso);
-           paquete.setPrecio(precioPaquete(departamento, peso));
-           this.getManagerDatos().guardarPaqueteEnArchivo(paquete);
-           this.getPaquetes().add(paquete);
-           agregado = true;
+    //Metodo de guardar funcionario 
+    public boolean guardarFuncionario(String unNombre, String unCelular, String unNumero, String unAnio){
+        
+        boolean verifico = false;
+        
+        if(verificoNombre(unNombre)){
+           Funcionario funcionario = new Funcionario(unNombre, unCelular, unNumero, unAnio);
+           this.getManagerDatos().guardarNuevoFuncionarioEnArchivo(funcionario);
+           this.getFuncionarios().add(funcionario);
+           verifico = true;
         }
-        return agregado;
+        return verifico;
     }
     
+    public Funcionario encontrarFuncionario(String nombre){
+        return Utils.encontrarFuncionario(this.getFuncionarios(), nombre);
+    }
+    
+    //</editor-fold>
+    
+    //<editor-fold desc="Tarifa">
     public double precioPaquete(String depto, int peso){
         double precio = 0;
         boolean zonaEncontrada = false;
@@ -246,5 +239,90 @@ public class Sistema {
         return precio;
     }
     
+    public String getNombreZona(String depto){
+        String nombreZona = "";
+        boolean zonaEncontrada = false;
+        Iterator<Tarifa> it = this.getTarifas().iterator();
+        while(it.hasNext() && nombreZona.isEmpty()){
+            Tarifa t = it.next();
+            if(t.deptoPerteneceAZona(depto)){
+                nombreZona = t.getNombre();
+            }
+        }
+        return nombreZona;
+    }
     //</editor-fold>
+    
+    //<editor-fold desc="Paquetes">
+    public boolean guardarPaquete(String id, Cliente cliente, Fecha fecha,String destinatario, String direccion, String departamento, int peso){
+        boolean agregado = false;
+        if(Utils.encontrarPaquete(paquetes,id) == null){
+            double precio = this.precioPaquete(departamento, peso);
+            String nombreZona = this.getNombreZona(departamento);
+            Paquete paquete = new Paquete(id, cliente, fecha, destinatario, direccion, departamento, peso, precio, nombreZona);
+            this.getManagerDatos().guardarPaqueteEnArchivo(paquete);
+            this.getPaquetes().add(paquete);
+            agregado = true;
+        }
+        return agregado;
+    }
+    
+    public ArrayList<Paquete> getPaquetesPorEstado(String estado){
+        ArrayList<Paquete> filtrados = new ArrayList<Paquete>();
+        for(Paquete p: this.getPaquetes()){
+            if(p.getEstado().equalsIgnoreCase(estado)){
+                filtrados.add(p);
+            }
+        }
+        Collections.sort(filtrados);
+        return filtrados;
+    }
+    
+    public ArrayList<Paquete> getPaquetesPorEstadoYZona(String estado, String nombreZona){
+        ArrayList<Paquete> filtrados = new ArrayList<Paquete>();
+        for(Paquete p: this.getPaquetes()){
+            if(p.getEstado().equalsIgnoreCase(estado) && p.getNombreZona().equalsIgnoreCase(nombreZona)){
+                filtrados.add(p);
+            }
+        }
+        Collections.sort(filtrados);
+        return filtrados;
+    }
+    
+    public ArrayList<Paquete> getPaquetesPorCliente(String nombreCliente){
+        ArrayList<Paquete> filtrados = new ArrayList<Paquete>();
+        for(Paquete p: this.getPaquetes()){
+            if(p.getCliente().getNombre().equalsIgnoreCase(nombreCliente)){
+                filtrados.add(p);
+            }
+        }
+        Collections.sort(filtrados);
+        return filtrados;
+    }
+    //</editor-fold>
+    
+    //<editor-fold desc="Envio">
+    public boolean guardarEnvio(Funcionario funcionario, Fecha fecha, String nombreZona, ArrayList<Paquete> paquetes){
+        Envio envio = new Envio(funcionario, fecha, nombreZona, paquetes);
+        for(Paquete p : paquetes){
+            p.aEnviado();
+        }
+        this.getEnvios().add(envio);
+        this.getManagerDatos().guardarEnvioEnArchivo(envio);
+        this.getManagerDatos().guardarModificacionPaqueteEnArchivo();
+        return true;
+    }
+    
+    public ArrayList<Envio> getEnviosPorFuncionario(String nombreFuncionario){
+        ArrayList<Envio> filtrados = new ArrayList<Envio>();
+        for(Envio e: this.getEnvios()){
+            if(e.getFuncionario().getNombre().equalsIgnoreCase(nombreFuncionario)){
+                filtrados.add(e);
+            }
+        }
+        
+        return filtrados;
+    }
+    //</editor-fold>
+    
 }//Class

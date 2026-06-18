@@ -13,7 +13,8 @@ public class Obligatorio2 {
         //Inicio el programa en este main para configurar solo una vez que las ventnas se vean como windows y para la ventna del F1
         //Inicio de codigo de chatgpt --> Para que todas las ventanas se vean como windows
         //Tambien aparece en el main de las clases de ventanas cuando se crean (lo elimino)
-        try{            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+        try{            
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;

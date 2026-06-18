@@ -81,6 +81,7 @@ public class VentanaIngresarPaquete extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nuevo Paquete");
+        setUndecorated(true);
 
         lblCliente.setText("Cliente");
 
@@ -278,8 +279,8 @@ public class VentanaIngresarPaquete extends javax.swing.JFrame {
             esValido &= !(id.isEmpty() || cliente == null || destinatario.isEmpty() || direccion.isEmpty() || departamento.equalsIgnoreCase("Seleccionar") || peso <= 0); //Ningun valor esta vacio
             if(esValido){
                 //Guardar en el sistema
-                if(!sistema.agregarPaquete(id, cliente, fecha, destinatario, direccion, departamento, peso)){
-                    JOptionPane.showMessageDialog(this, "Ya existe un Paquete con ese identificador, ingrese otro."); //Pide otro nombre
+                if(!sistema.guardarPaquete(id, cliente, fecha, destinatario, direccion, departamento, peso)){
+                    JOptionPane.showMessageDialog(this, "Ya existe un Paquete con ese identificador, ingrese otro.", "Error al guardar paquete", ERROR_MESSAGE); //Pide otro nombre
                 }
                 else{
                     JOptionPane.showMessageDialog(this, "Paquete ingresado correctamente.");
@@ -289,14 +290,14 @@ public class VentanaIngresarPaquete extends javax.swing.JFrame {
                 } 
             }
             else{
-                JOptionPane.showMessageDialog(this, "Debe ingresar un todos los datos.");
+                JOptionPane.showMessageDialog(this, "Debe ingresar un todos los datos.", "Error al guardar paquete", ERROR_MESSAGE);
             }
         } catch (NumberFormatException ex){
             //Loggear el error
-            JOptionPane.showMessageDialog(this, "La fecha y el peso deben ser valores numéricos.");
+            JOptionPane.showMessageDialog(this, "La fecha y el peso deben ser valores numéricos.", "Error al guardar paquete", ERROR_MESSAGE);
         } catch(ErrorFechaNoValidaException ex) {
             //Loggear el error
-            JOptionPane.showMessageDialog(this, "El formato de fecha es inválida o se ingresó una fecha incorrecta.");
+            JOptionPane.showMessageDialog(this, "El formato de fecha es inválida o se ingresó una fecha incorrecta.", "Error al guardar paquete", ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
     

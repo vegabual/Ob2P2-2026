@@ -13,8 +13,10 @@ import Modelo.Paquete;
 import Modelo.Tarifa;
 import Utils.Utils;
 import Controladores.Sistema;
+import Excepciones.ErrorCargaArchivoMalformado;
 import Excepciones.ErrorFechaNoValidaException;
 import Modelo.Fecha;
+import java.util.StringTokenizer;
 
 /**
  * Clase para el guardado de archivos y recuperacion de datos del mismo
@@ -92,7 +94,7 @@ public class ManagerDatos {
         this.setEnvios(envios);
     }
     
-    public void inicializar(boolean ext){
+    public void inicializar(boolean ext) throws ErrorCargaArchivoMalformado{
         ArchivoGrabacion archClientes = null;
         ArchivoGrabacion archFuncionarios = null;
         ArchivoGrabacion archPaquetes = null;
@@ -106,15 +108,19 @@ public class ManagerDatos {
             archEnvios = new ArchivoGrabacion(ManagerDatos.ARCHIVO_ENVIOS, ext);
             archTarifas = new ArchivoGrabacion(ARCHIVO_TARIFAS, ext);
 
-            cargarTarifas(archTarifas, ext);
+            cargarTarifas(ext);
             
             if(ext){ //Usa datos guardados
                 this.cargarClientes(); //El this es del sistema seleccionado
                 this.cargarFuncionarios();
+                this.cargarPaquetes();
             }
             
         } catch(Exception e){
-            System.err.println(e.getMessage());
+            ErrorCargaArchivoMalformado exCarga = new ErrorCargaArchivoMalformado();
+            exCarga.setStackTrace(e.getStackTrace()); //repite el stacktrace de la excepcion original para poder debuggear
+            exCarga.addSuppressed(e); //Se guarda referencia al error que sucedio asi se puede debuggear
+            throw exCarga;
         }
         finally{
             archClientes.cerrar(); 
@@ -153,7 +159,8 @@ public class ManagerDatos {
         arch.cerrar();
     }
     
-    public void cargarTarifas(ArchivoGrabacion arch, boolean usarGuardado){
+    //Metodo para cargar las tarifas en el sistema
+    public void cargarTarifas(boolean usarGuardado){
         ArchivoLectura datosACargar = new ArchivoLectura(ARCHIVO_TARIFAS);
         
         if(!usarGuardado){
@@ -162,14 +169,46 @@ public class ManagerDatos {
         
         while(datosACargar.hayMasLineas()){
             Tarifa tarifa = archivoATarifa(datosACargar.linea());
-            this.getTarifas().add(tarifa);
-            if(!usarGuardado){
-                guardarTarifaEnArchivo(tarifa);
+            if(tarifa != null){
+                this.getTarifas().add(tarifa);
+                if(!usarGuardado){
+                    guardarTarifaEnArchivo(tarifa);
+                }
             }
         }
     }
+    
+    //Metodo para cargar los funcionarios en el sistema
+    public void cargarPaquetes(){
+        ArchivoLectura arch = new ArchivoLectura(ARCHIVO_PAQUETES);
+
+        while(arch.hayMasLineas()){
+            String linea = arch.linea();
+            String[] datos = linea.split("--");
+            Paquete paquete = archivoAPaquete(linea);
+            if(paquete != null){
+                this.getPaquetes().add(paquete);
+            }
+        }
+        arch.cerrar();
+    }
+    
+    public void cargarEnvios(){
+        ArchivoLectura arch = new ArchivoLectura(ARCHIVO_ENVIOS);
+
+        while(arch.hayMasLineas()){
+            String linea = arch.linea();
+            String[] datos = linea.split("--");
+            Envio envio = archivoAEnvio(linea);
+            if(envio != null){
+                this.getEnvios().add(envio);
+            }
+        }
+        arch.cerrar();
+    }
     //</editor-fold>
     
+    //<editor-fold desc="Archivo a objeto">
     public Tarifa archivoATarifa(String lineaArchivo){
         String[] items = lineaArchivo.split("#");
         Tarifa tarifa = null;
@@ -191,7 +230,7 @@ public class ManagerDatos {
     public Paquete archivoAPaquete(String lineaArchivo) throws ErrorFechaNoValidaException {
         String[] items = lineaArchivo.split("--");
         Paquete paquete = null;
-        if(items.length == 8){
+        if(items.length == 10){
             String id = items[0];
             Cliente cliente = Utils.encontrarCliente(this.getClientes(), items[1]);
             Fecha fechaIngreso = Fecha.parseFecha(items[2]);
@@ -199,13 +238,42 @@ public class ManagerDatos {
             String direccion = items[4];
             String destino = items[5];
             int peso = Integer.parseInt(items[6]);
-
-            paquete = new Paquete(id, cliente, fechaIngreso, destinatario, direccion, destino, peso);
-            paquete.setPrecio(Double.parseDouble(items[7]));
+            double precio = Double.parseDouble(items[7]);
+            String estado = items[8];
+            String zona = items[9];
+            
+            paquete = new Paquete(id, cliente, fechaIngreso, destinatario, direccion, destino, peso, precio, zona, estado);
         }
         return paquete;
     }
     
+    public Envio archivoAEnvio(String lineaArchivo) throws ErrorFechaNoValidaException {
+        String[] items = lineaArchivo.split("--");
+        Envio envio = null;
+        if(items.length == 6){
+            int numeroEnvio = Integer.parseInt(items[0]);
+            Funcionario funcionario = Utils.encontrarFuncionario(this.getFuncionarios(), items[1]);
+            Fecha fecha = Fecha.parseFecha(items[2]);
+            String zona = items[3];
+            String estado = items[4];
+            ArrayList<Paquete> paquetes = listaIdAPaquetes(items[5]);
+
+            envio = new Envio(numeroEnvio, funcionario, fecha, zona, estado, paquetes);
+        }
+        return envio;
+    }
+    
+    public ArrayList<Paquete> listaIdAPaquetes(String idsPaquetes) {
+        ArrayList<Paquete> paquetes = new ArrayList<Paquete>();
+        StringTokenizer st = new StringTokenizer(idsPaquetes, ",");
+        while(st.hasMoreTokens()){
+            String id = st.nextToken();
+            Paquete paquete = Utils.encontrarPaquete(this.getPaquetes(), id);
+            paquetes.add(paquete);
+        }
+        return paquetes;
+    }
+    //</editor-fold>
     
     private String[] deptosPorZona(String nombreZona){
         String[] deptos = null;
@@ -226,54 +294,84 @@ public class ManagerDatos {
         return deptos;
     }
     
-    public boolean guardarPaqueteEnArchivo(Paquete paquete){
-        boolean seGuardo = false;
-        ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_PAQUETES, true);
-        arch.grabarLinea(paquete.toString());
-        arch.cerrar();
-        return seGuardo;
-    }
-    
+    //<editor-fold desc="Guardar en archivo">
     //Metodo para guardar clientes en archivo
-     public boolean guardarClienteEnArchivo(Cliente cliente){  
-        
-        boolean seGuardo = false;
-        
+    public void guardarNuevoClienteEnArchivo(Cliente cliente){
         ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_CLIENTES, true);
         arch.grabarLinea(cliente.toString());
-        
+
         arch.cerrar();
-        return seGuardo;
     }
-     
+    
+    //Metodo para guardar todos los clientes de nuevo
+    public void guardarModificacionClienteEnArchivo(){
+        ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_CLIENTES, false);
+        for(Cliente cliente : this.getClientes()){
+            arch.grabarLinea(cliente.toString());
+        }
+
+        arch.cerrar();
+    }
+    
     //Metodo para guardar funcionarios en archivo
-     public boolean guardarFuncionarioEnArchivo(Funcionario funcionario){  
-        
-        boolean seGuardo = false;
-        
+    public void guardarNuevoFuncionarioEnArchivo(Funcionario funcionario){  
         ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_FUNCIONARIOS, true);
         arch.grabarLinea(funcionario.toString());
         
         arch.cerrar();
-        return seGuardo;
     }
-       
+    
+    //Metodo para guardar todos los funcionarios de nuevo
+    public void guardarModificacionFuncionarioEnArchivo(){
+        ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_FUNCIONARIOS, false);
+        for(Funcionario funcionario : this.getFuncionarios()){
+            arch.grabarLinea(funcionario.toString());
+        }
+
+        arch.cerrar();
+    }
+    
     //Metodo para guardar funcionarios en archivo
-    public boolean guardarTarifaEnArchivo(Tarifa tarifa){  
-        boolean seGuardo = false;
+    public void guardarTarifaEnArchivo(Tarifa tarifa){  
         ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_TARIFAS, true);
         arch.grabarLinea(tarifa.toString());
         arch.cerrar();
-        return seGuardo;
+    }
+    
+    //Metodo para guardar paquete en archivo
+    public void guardarPaqueteEnArchivo(Paquete paquete){
+        ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_PAQUETES, true);
+        arch.grabarLinea(paquete.aGuardar());
+        arch.cerrar();
+    }
+    
+    //Metodo para guardar todos los paquetes de nuevo
+    public void guardarModificacionPaqueteEnArchivo(){
+        ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_PAQUETES, false);
+        
+        for(Paquete paquete : this.getPaquetes()){
+            arch.grabarLinea(paquete.aGuardar());
+        }
+
+        arch.cerrar();
     }
     
     //Metodo para guardar envios en archivo
-    public boolean guardarEnvioEnArchivo(Envio envio){  
-        boolean seGuardo = false;
+    public void guardarEnvioEnArchivo(Envio envio){  
         ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_ENVIOS, true);
-        arch.grabarLinea(envio.toString());
+        arch.grabarLinea(envio.aGuardar());
         arch.cerrar();
-        return seGuardo;
     }
-       
+    
+    //Metodo para guardar todos los envios de nuevo
+    public void guardarModificacionEnvioEnArchivo(){
+        ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_ENVIOS, false);
+        
+        for(Envio envio : this.getEnvios()){
+            arch.grabarLinea(envio.aGuardar());
+        }
+
+        arch.cerrar();
+    }
+    //</editor-fold>
 }

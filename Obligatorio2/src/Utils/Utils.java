@@ -12,7 +12,6 @@ import Modelo.Paquete;
 public class Utils {
     
     public static Cliente encontrarCliente(ArrayList<Cliente> clientes, String nombre){
-        
         Cliente clienteEncontrado = null;
         Iterator<Cliente> it = clientes.iterator();
         while(it.hasNext() && clienteEncontrado == null){
@@ -70,5 +69,26 @@ public class Utils {
             contiene = arr[i] == numero;
         }
         return contiene;
+    }
+    
+    public static String aKilosYgramos(int pesoEnGramos){
+        String peso = pesoEnGramos + " grs.";
+        if(pesoEnGramos > 1000){
+            peso = ((double)pesoEnGramos / 1000) + " kg.";
+        }
+        return peso;
+    }
+    
+    public static String listaPaquetesAStringDeID(ArrayList<Paquete> paquetes, char sep){
+        String ids = "";
+        Iterator<Paquete> it = paquetes.iterator();
+        if(it.hasNext()){
+            ids += it.next().getId();
+        }
+        while(it.hasNext()){
+            ids += sep + it.next().getId();
+        }
+        
+        return ids;
     }
 }

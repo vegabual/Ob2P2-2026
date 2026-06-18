@@ -9,9 +9,10 @@ import java.util.ArrayList;
 public class Envio {
     private Funcionario funcionario; //PARA EL METODO DE ENVIO
     private int numeroEnvio;
-    private String fechaEnvio;
+    private Fecha fechaEnvio;
     private ArrayList<Paquete> paquetes;
     private String estado;
+    private String nombreZona;
     private static int ultimoId = 0;
 
     //<editor-fold desc="Getter y setter">
@@ -31,11 +32,11 @@ public class Envio {
         this.numeroEnvio = numeroEnvio;
     }
 
-    public String getFechaEnvio() {
+    public Fecha getFechaEnvio() {
         return fechaEnvio;
     }
 
-    public void setFechaEnvio(String fechaEnvio) {
+    public void setFechaEnvio(Fecha fechaEnvio) {
         this.fechaEnvio = fechaEnvio;
     }
 
@@ -47,10 +48,6 @@ public class Envio {
         this.paquetes = paquetes;
     }
     
-    public void agregarPaquete(Paquete paquete){
-        this.getPaquetes().add(paquete);
-    }
-
     public String getEstado() {
         return estado;
     }
@@ -58,20 +55,59 @@ public class Envio {
     private void setEstado(String estado) {
         this.estado = estado;
     }
-    //</editor-fold>
 
-    public Envio(Funcionario funcionario, int numeroEnvio, String fechaEnvio) {
-        this.funcionario = funcionario;
-        this.numeroEnvio = numeroEnvio;
-        this.fechaEnvio = fechaEnvio;
-        this.estado = "CREADO";
-        this.paquetes = new ArrayList<Paquete>();
+    public String getNombreZona() {
+        return nombreZona;
+    }
+
+    public void setNombreZona(String nombreZona) {
+        this.nombreZona = nombreZona;
+    }
+
+    public static int getUltimoId() {
+        return ultimoId;
     }
     
-    private void eliminarPaquete(String id){
+    //</editor-fold>
+
+    public Envio(Funcionario funcionario, Fecha fechaEnvio, String zona, ArrayList<Paquete> paquetes) {
+        this.setFuncionario(funcionario);
+        this.setNumeroEnvio(++ultimoId);
+        this.setFechaEnvio(fechaEnvio);
+        this.setEstado("CREADO");
+        this.setNombreZona(zona);
+        this.setPaquetes(paquetes);
+    }
+    
+    public Envio(int id, Funcionario funcionario, Fecha fechaEnvio, String zona, String estado, ArrayList<Paquete> paquetes) {
+        this.setFuncionario(funcionario);
+        this.setNumeroEnvio(id);
+        this.setFechaEnvio(fechaEnvio);
+        this.setEstado(estado);
+        this.setNombreZona(zona);
+        this.setPaquetes(paquetes);
+        ultimoId++;
+    }
+    
+    public void agregarPaquete(Paquete paquete){
+        this.getPaquetes().add(paquete);
+    }
+
+    public void agregarPaquetes(ArrayList<Paquete> paquetes){
+        for(Paquete p : paquetes){
+            this.getPaquetes().add(p);
+        }
+    }
+    
+    private void removerPaquete(String id){
         Paquete paquete = Utils.encontrarPaquete(this.getPaquetes(), id);
         if(paquete != null){
             this.getPaquetes().remove(paquete);
         }
+    }
+    
+    public String aGuardar(){
+        String paquetesString = Utils.listaPaquetesAStringDeID(paquetes, ',');
+        return this.getNumeroEnvio() + "--" + this.getFuncionario().toString() + "--" + this.getFechaEnvio().toString() + "--"  + this.getNombreZona() + "--" + this.getEstado() + "--" + paquetesString;
     }
 }

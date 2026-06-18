@@ -5,6 +5,8 @@ package Interfaz;
 
 import javax.swing.JOptionPane;
 import Controladores.Sistema;
+import Excepciones.ErrorCargaArchivoMalformado;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
     
@@ -91,14 +93,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_SistemaNuevo
 
     private void SistemaGuardado(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SistemaGuardado
-        
-        Sistema guardado = new Sistema();
-        guardado.sistemaGuardado(); //Llama al metodo del sistema que carga el archivo guardado
-        Menu menu = new Menu();
-        menu.setSistema(guardado); //Le paso el sistema elegido
-        menu.setVisible(true);
-        dispose();
-        //TODAVIA NO FUNCIONA BIEN
+        try {
+            Sistema guardado = new Sistema();
+            guardado.sistemaGuardado(); //Llama al metodo del sistema que carga el archivo guardado
+            Menu menu = new Menu();
+            menu.setSistema(guardado); //Le paso el sistema elegido
+            menu.setVisible(true);
+            dispose();
+        } catch (Exception ex){
+            JOptionPane.showMessageDialog(this, "Ocurrió un error al cargar los archivos guardados, revise el formato o comience un sistema nuevo.", "Error al cargar datos", ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_SistemaGuardado
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
