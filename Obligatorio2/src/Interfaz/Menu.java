@@ -174,7 +174,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_R_Estado
 
     private void R_Cliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_R_Cliente
-        //LLAMA A LA VENTANA
+        VentanaReporteCliente nueva = new VentanaReporteCliente(sistema);
+        nueva.setVisible(true);
     }//GEN-LAST:event_R_Cliente
 
     private void Transacciones(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Transacciones

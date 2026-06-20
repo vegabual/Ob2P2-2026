@@ -38,10 +38,10 @@ public class Paquete implements Comparable<Paquete>{
     private Fecha fechaIngreso; //formato dd/mm/aaaa?
     private String destinatario;
     private String direccion;
-    private String destino; //PUEDE SER OBJETO DE CLASE DEPARTAMENTO SI SE DECIE HACER ESO EN VER DE CLASE TARIFA
+    private String destino;
     private int peso; //en gramos
     private double precio; //debe ser calculado segun la tarifa del departamto los gramos ingresados
-    private String estado; //QUEDA EN "PENDIENTE"
+    private String estado;
     private String nombreZona;
     
     //<editor-fold desc="Getters and setters">
