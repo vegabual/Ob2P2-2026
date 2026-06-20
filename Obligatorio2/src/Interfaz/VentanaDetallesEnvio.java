@@ -108,28 +108,24 @@ public class VentanaDetallesEnvio extends javax.swing.JFrame {
         lblEnvioTitulo.setText("Envío:");
 
         lblID.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        lblID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblID.setText("0");
 
         lblNombreFuncionarioTitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNombreFuncionarioTitulo.setText("Funcionario:");
 
         lblNombreFuncionario.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        lblNombreFuncionario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNombreFuncionario.setText("Nombre");
 
         lblNumeroFuncionarioTitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNumeroFuncionarioTitulo.setText("Numero:");
 
         lblNumeroFuncionario.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        lblNumeroFuncionario.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblNumeroFuncionario.setText("123");
 
         lblZonaTitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblZonaTitulo.setText("Zona:");
 
         lblZona.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        lblZona.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblZona.setText("SUR");
 
         lblPaquetesTitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -143,7 +139,6 @@ public class VentanaDetallesEnvio extends javax.swing.JFrame {
         lblFechaTitulo.setText("Fecha:");
 
         lblFecha.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        lblFecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblFecha.setText("11/11/11");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,13 +161,13 @@ public class VentanaDetallesEnvio extends javax.swing.JFrame {
                                 .addComponent(lblNombreFuncionarioTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblEnvioTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblZonaTitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(18, 18, 18)
+                            .addGap(0, 0, 0)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblNumeroFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblNombreFuncionario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblZona, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)))))
+                                .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                                .addComponent(lblNumeroFuncionario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(

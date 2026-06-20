@@ -16,6 +16,8 @@ import Controladores.Sistema;
 import Excepciones.ErrorCargaArchivoMalformado;
 import Excepciones.ErrorFechaNoValidaException;
 import Modelo.Fecha;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.StringTokenizer;
 
 /**
@@ -29,6 +31,7 @@ public class ManagerDatos {
     private static final String ARCHIVO_ENVIOS = "Envios.txt";
     private static final String ARCHIVO_TARIFAS_DEFECTO = "Tarifas.txt";
     private static final String ARCHIVO_TARIFAS = "Tarifas_Guardadas.txt";
+    private static final String ARCHIVO_LOGS = "Transacciones.log";
     
     private static String[] deptosNorte = {"ARTIGAS", "SALTO", "PAYSANDU", "RIVERA", "TACUAREMBO"};
     private static String[] deptosOeste = {"RIO NEGRO", "SORIANO", "COLONIA", "SAN JOSE"};
@@ -417,5 +420,33 @@ public class ManagerDatos {
         arch.cerrar();
     }
        
+    //</editor-fold>
+    
+    //<editor-fold desc="Logs">
+    public void generarLog(String accion){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        String log = formatter.format(LocalDateTime.now()) + " - " + accion;
+        ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_LOGS, true);
+        arch.grabarLinea(log);
+        arch.cerrar();
+    }
+    
+    public void limpiarLogs(){
+        ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_LOGS, false);
+        arch.cerrar();
+    }
+    
+    public ArrayList<String> obtenerLogs(){
+        ArchivoLectura arch =  new ArchivoLectura(ARCHIVO_LOGS);
+        ArrayList<String> logs = new ArrayList<String>();
+        
+        while(arch.hayMasLineas()){
+            String linea = arch.linea();
+            logs.add(linea);
+        }
+
+        arch.cerrar();
+        return logs;
+    }
     //</editor-fold>
 }

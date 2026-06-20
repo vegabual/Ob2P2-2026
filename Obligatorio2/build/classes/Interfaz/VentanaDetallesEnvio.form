@@ -41,13 +41,13 @@
                               <Component id="lblEnvioTitulo" alignment="0" max="32767" attributes="0"/>
                               <Component id="lblZonaTitulo" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblNumeroFuncionario" max="32767" attributes="0"/>
                               <Component id="lblNombreFuncionario" alignment="1" max="32767" attributes="0"/>
                               <Component id="lblID" alignment="1" max="32767" attributes="0"/>
                               <Component id="lblZona" alignment="1" max="32767" attributes="0"/>
                               <Component id="lblFecha" alignment="1" pref="276" max="32767" attributes="0"/>
+                              <Component id="lblNumeroFuncionario" alignment="1" min="-2" pref="261" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -134,7 +134,6 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="0"/>
         </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>
     </Component>
@@ -151,7 +150,6 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="0"/>
         </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Nombre"/>
       </Properties>
     </Component>
@@ -168,7 +166,6 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="0"/>
         </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="123"/>
       </Properties>
     </Component>
@@ -185,7 +182,6 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="0"/>
         </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="SUR"/>
       </Properties>
     </Component>
@@ -219,7 +215,6 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="0"/>
         </Property>
-        <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="11/11/11"/>
       </Properties>
     </Component>

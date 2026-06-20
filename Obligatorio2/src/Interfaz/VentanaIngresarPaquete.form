@@ -26,24 +26,19 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblPrecio" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblPrecioCalculado" min="-2" pref="371" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblId1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCliente" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFecha" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDestinatario" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDepartamento" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPeso" alignment="0" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblId1" max="32767" attributes="0"/>
+                          <Component id="lblCliente" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblFecha" alignment="0" pref="208" max="32767" attributes="0"/>
+                          <Component id="lblDestinatario" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblDireccion" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblDepartamento" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblPeso" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="cmbCliente" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtId" alignment="0" max="32767" attributes="0"/>
@@ -64,32 +59,36 @@
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblPrecio" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblPrecioCalculado" min="-2" pref="457" max="-2" attributes="0"/>
+                          <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-              <Component id="btnGuardar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblId1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtId" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmbCliente" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblFecha" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtFechaDia" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -98,27 +97,27 @@
                   <Component id="txtFechaMes" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtFechaAnio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblDestinatario" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDestinatario" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblDepartamento" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmbDepartamento" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPeso" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtPeso" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPrecioCalculado" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -128,7 +127,7 @@
                   <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

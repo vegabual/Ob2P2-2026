@@ -32,20 +32,8 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lblCelularTitulo" pref="169" max="32767" attributes="0"/>
-                          <Component id="lblCorreoTitulo" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblClienteCorreo" max="32767" attributes="0"/>
-                          <Component id="lblClienteCelular" min="-2" pref="202" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="lblPesoTitulo" max="32767" attributes="0"/>
@@ -53,8 +41,8 @@
                       </Group>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblPrecio" max="32767" attributes="0"/>
                           <Component id="lblPeso" max="32767" attributes="0"/>
+                          <Component id="lblPrecio" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -65,11 +53,26 @@
                           <Component id="lblFechaTitulo" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblDireccion" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblDestinatario" alignment="0" max="32767" attributes="0"/>
+                          <Component id="lblFecha" max="32767" attributes="0"/>
+                          <Component id="lblDestino" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="lblCelularTitulo" pref="169" max="32767" attributes="0"/>
+                          <Component id="lblCorreoTitulo" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblFecha" alignment="1" max="32767" attributes="0"/>
-                          <Component id="lblDestinatario" alignment="1" max="32767" attributes="0"/>
-                          <Component id="lblDireccion" alignment="1" max="32767" attributes="0"/>
-                          <Component id="lblDestino" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                              <Component id="lblClienteCelular" min="-2" pref="196" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="lblClienteCorreo" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -84,13 +87,14 @@
                       </Group>
                   </Group>
               </Group>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblIDTitulo" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="lblID" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -140,7 +144,7 @@
                   <Component id="lblPrecioTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPrecio" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
