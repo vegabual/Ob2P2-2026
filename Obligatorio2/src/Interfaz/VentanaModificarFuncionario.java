@@ -68,12 +68,15 @@ public class VentanaModificarFuncionario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
+        Nombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Nombre.setText("Nombre Actual:");
 
+        Celular.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Celular.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Celular.setText("Celular Actual:");
 
+        Numero.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Numero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Numero.setText("Numero Actual:");
 
@@ -87,18 +90,23 @@ public class VentanaModificarFuncionario extends javax.swing.JFrame {
         lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl.setText("Ingrese los datos a modificar:");
 
+        NombreN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         NombreN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NombreN.setText("Nombre Nuevo:");
 
+        CelularN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         CelularN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CelularN.setText("Celular Nuevo:");
 
+        CorreoN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         CorreoN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CorreoN.setText("Numero Nuevo:");
 
+        Anio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Anio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Anio.setText("Año Actual:");
 
+        AnioN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         AnioN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         AnioN.setText("Año Nuevo:");
 
@@ -134,8 +142,8 @@ public class VentanaModificarFuncionario extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(nombreA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(celularA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(numeroA, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
+                                    .addComponent(numeroA, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(CelularN)
@@ -223,7 +231,7 @@ public class VentanaModificarFuncionario extends javax.swing.JFrame {
             this.dispose();
         }
         else{
-            JOptionPane.showMessageDialog(this, "Error, no se pudo modificar el funcionario.");
+            JOptionPane.showMessageDialog(this, "Ya existe un cliente o funcionario con ese nombre, ingrese otro.");
         }           
     }//GEN-LAST:event_ModificarFuncionario
 

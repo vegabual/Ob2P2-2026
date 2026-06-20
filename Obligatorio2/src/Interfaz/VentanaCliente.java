@@ -124,7 +124,6 @@ public class VentanaCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void IngresarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IngresarCliente
-
         VentanaIngresarCliente nuevoCliente = new VentanaIngresarCliente(sistema);
         nuevoCliente.setVisible(true); 
         dispose();

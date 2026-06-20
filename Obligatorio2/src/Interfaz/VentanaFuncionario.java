@@ -138,7 +138,7 @@ public class VentanaFuncionario extends javax.swing.JFrame {
         int fila = ListaFuncionarios.getSelectedRow(); //Saca la fila seleccionada
 
         if(fila != -1){ //Verifico que la fila exista
-            String nombre = ListaFuncionarios.getValueAt(fila, 1).toString(); //Saco el numero de la fila, la columna es 1 porque uso nombre
+            String nombre = ListaFuncionarios.getValueAt(fila, 0).toString();
             Funcionario funcionario = Utils.encontrarFuncionario(sistema.getFuncionarios(), nombre);
 
             if(funcionario != null){ //Si el cliente existe abro la ventana de modificar
@@ -153,8 +153,8 @@ public class VentanaFuncionario extends javax.swing.JFrame {
     private void cargarFuncionarios(){
         
         DefaultTableModel modelo = new DefaultTableModel(); //Defino una nueva tabla
-        modelo.addColumn("Año de Ingreso");
-        modelo.addColumn("Nombre"); //Le pongo el nombre a cada columna
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Año de Ingreso"); //Le pongo el nombre a cada columna
         modelo.addColumn("Celular");
         modelo.addColumn("Número de Funcionario");
         
@@ -167,7 +167,7 @@ public class VentanaFuncionario extends javax.swing.JFrame {
         //Para cada funcionario lo agrego a la tabla
         for(int i = 0; i < ordenada.size(); i++){
             Funcionario f = ordenada.get(i);
-            modelo.addRow(new Object[]{f.getAnio(), f.getNombre(), f.getCelular(), f.getNumero()});
+            modelo.addRow(new Object[]{f.getNombre(), f.getAnio(), f.getCelular(), f.getNumero()});
             //Crea un objeto con los datos que le paso
         }
         

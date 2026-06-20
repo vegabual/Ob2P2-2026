@@ -36,55 +36,40 @@ public class VentanaBienvenida extends javax.swing.JFrame {
         lbl_2 = new javax.swing.JLabel();
         lbl_3 = new javax.swing.JLabel();
         lbl_4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_1.setText("Programa creado por:");
+        getContentPane().add(lbl_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 255, -1));
 
+        lbl_2.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         lbl_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_2.setText("212712 - Veronica Busiello");
+        getContentPane().add(lbl_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 255, -1));
 
+        lbl_3.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         lbl_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_3.setText("354398 - Lourdes Ayala");
+        getContentPane().add(lbl_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 255, -1));
 
-        lbl_4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lbl_4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_4.setText("Programación 2 - Primer Semestre 2026");
+        getContentPane().add(lbl_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 340, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbl_4, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_3, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(lbl_4)
-                .addGap(18, 18, 18)
-                .addComponent(lbl_1)
-                .addGap(18, 18, 18)
-                .addComponent(lbl_2)
-                .addGap(18, 18, 18)
-                .addComponent(lbl_3)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Borde.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_1;
     private javax.swing.JLabel lbl_2;
     private javax.swing.JLabel lbl_3;

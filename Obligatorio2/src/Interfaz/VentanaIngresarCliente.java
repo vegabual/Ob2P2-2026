@@ -49,12 +49,15 @@ public class VentanaIngresarCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
+        Nombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Nombre.setText("Nombre:");
 
+        Celular.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Celular.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Celular.setText("Celular:");
 
+        Correo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Correo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Correo.setText("Correo:");
 
@@ -94,7 +97,7 @@ public class VentanaIngresarCliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,6 +133,7 @@ public class VentanaIngresarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_Cancelar
 
     private void GuardarCliente(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarCliente
+        
         String nombre = TextoNombre.getText().trim();
         String celular = TextoCelular.getText().trim();
         String correo = TextoCorreo.getText().trim();
@@ -137,12 +141,12 @@ public class VentanaIngresarCliente extends javax.swing.JFrame {
         //Validar
         if(nombre.isEmpty() || celular.isEmpty() || correo.isEmpty()){
             JOptionPane.showMessageDialog(this, "Debe ingresar un nombre, un celular y un correo.");
-        } else{
+        }
+        else{
             //Guardar en el sistema
             if(!sistema.guardarCliente(nombre, celular, correo)){
-                JOptionPane.showMessageDialog(this, "Ya existe un cliente o funcionario con ese nombre, ingrese otro."); //Pide otro nombre
+                JOptionPane.showMessageDialog(this, "Ya existe un cliente o funcionario con ese nombre, ingrese otro.");
             }
-
             else{
                 JOptionPane.showMessageDialog(this, "Cliente guardado correctamente.");
                 VentanaCliente nueva = new VentanaCliente(sistema);
