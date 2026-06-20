@@ -71,27 +71,6 @@ public class Tarifa {
         this.setDepartamentos(departamentos);
     }
     
-    //Para usar con el metodo cargarTarifas de la clase ManagerDatos
-    public Tarifa(String nombre, double precioCat1,double precioCat2, double precioCat3,double precioCat4){
-        this.setNombre(nombre);
-        this.setPrecioCat1(precioCat1);
-        this.setPrecioCat2(precioCat2);
-        this.setPrecioCat3(precioCat3);
-        this.setPrecioCat4(precioCat4);
-    }
-    
-    /**
-     * Sube los precios un porcentaje dado
-     * @param porcentaje Porcentaje que suben los precios
-     */
-    public void subirPrecios(double porcentaje){
-        //CALCULAR NUEVO PRECIO PARA CADA UNO DE LAS CATEGORIAS Y GUARDAR EL DATO EN ARCHIVO (y en memoria)
-    }
-    
-    public void bajarPrecios(double porcentaje){
-        //CALCULAR NUEVO PRECIO PARA CADA UNO DE LAS CATEGORIAS Y GUARDAR EL DATO EN ARCHIVO (y en memoria)
-    }
-    
     /**
      * Dado un departamento, determina si pertenece a la zona de la tarifa
      * @param departamento Departamento a definir

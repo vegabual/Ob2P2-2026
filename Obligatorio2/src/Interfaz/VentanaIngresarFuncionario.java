@@ -51,12 +51,15 @@ public class VentanaIngresarFuncionario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
+        Nombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Nombre.setText("Nombre:");
 
+        Celular.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Celular.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Celular.setText("Celular:");
 
+        Anio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Anio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Anio.setText("Año de Ingreso");
 
@@ -70,6 +73,7 @@ public class VentanaIngresarFuncionario extends javax.swing.JFrame {
         lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl.setText("Ingrese los siguientes datos:");
 
+        Numero1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Numero1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Numero1.setText("Número de Funcionario");
 
@@ -98,7 +102,7 @@ public class VentanaIngresarFuncionario extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +156,7 @@ public class VentanaIngresarFuncionario extends javax.swing.JFrame {
 
             //Guardar en el sistema
             if(!sistema.guardarFuncionario(nombre, celular, numero, anio)){
-                JOptionPane.showMessageDialog(this, "Ya existe un cliente o funcionario con ese nombre, ingrese otro."); //Pide otro nombre
+                JOptionPane.showMessageDialog(this, "Ya existe un cliente o funcionario con ese nombre, ingrese otro.");
             }
             
             else{

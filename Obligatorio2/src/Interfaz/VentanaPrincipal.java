@@ -77,7 +77,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void SistemaNuevo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SistemaNuevo
         
-        //Salta un caudro que pide verificar, con un si o no
+        //Salta un cuadro que pide verificar, con un si o no
         int verifico = JOptionPane.showConfirmDialog(this, "Si crea un sistema nuevo,"
                 + " se borraran los datos del sistema actualmente guardado.\n¿Desea continuar?", "¡ATENCIÓN!",
                 JOptionPane.YES_NO_OPTION);

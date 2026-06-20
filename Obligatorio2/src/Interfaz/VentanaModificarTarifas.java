@@ -38,21 +38,26 @@ public class VentanaModificarTarifas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BotonDecide = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         Aumentar = new javax.swing.JRadioButton();
         Disminuir = new javax.swing.JRadioButton();
         Porcentaje = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Modificar = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Seleccione la opción que desee e ingrese el porcentaje a modificar:");
 
+        BotonDecide.add(Aumentar);
         Aumentar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Aumentar.setText("Aumento de precios");
 
+        BotonDecide.add(Disminuir);
         Disminuir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Disminuir.setText("Disminución de precios");
 
@@ -62,68 +67,129 @@ public class VentanaModificarTarifas extends javax.swing.JFrame {
         Modificar.setText("Modificar");
         Modificar.addActionListener(this::MoodificarTarifas);
 
+        Cancelar.setText("Cancelar");
+        Cancelar.addActionListener(this::Cancelar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Disminuir)
-                    .addComponent(Aumentar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Porcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Disminuir)
+                            .addComponent(Aumentar, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Porcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(Modificar)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addGap(131, 131, 131)
+                        .addComponent(Modificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(Cancelar)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Aumentar)
-                    .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(Porcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(Aumentar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Disminuir)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Disminuir)
-                    .addComponent(Porcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(Modificar)
-                .addContainerGap(120, Short.MAX_VALUE))
+                    .addComponent(Modificar)
+                    .addComponent(Cancelar))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void MoodificarTarifas(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoodificarTarifas
+        //TENGO QUE USAR RETURN SINO ME ABRE MUCHAS VENTANAS
         
-        //Salta un caudro que pide verificar, con un si o no
-        int verifico = JOptionPane.showConfirmDialog(this, "Si modifica las tarifas,"
-                + " se aplicara el cambio a todas las categorias y en todas las zonas.\n¿Desea continuar?", "¡ATENCIÓN!",
-                JOptionPane.YES_NO_OPTION);
-        
-        if(verifico == JOptionPane.YES_OPTION){ //Si dice que si, se modifica segun el boton seleccionado
-            //codifgo que llame metodo de disminuir o aumentar
-            dispose();    
+        String numero = Porcentaje.getText().trim();
+
+        //Verifico que seleccionen un boton
+        if(!Aumentar.isSelected() && !Disminuir.isSelected()){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar Aumentar o Disminuir.");
+            return;
         }
+        
+        //Valido que haya un numero en el cuadro de texto
+        if(numero.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número entre 1 y 99.");
+            return;
+        }
+        
+        //Valido que se ingrese solo un numero
+        try{
+            double valido = Double.parseDouble(numero);
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número entre el 1 y el 99.");
+            return;
+        }
+        
+       //Valido que sea entre 1 y 99 para que funcionen bien los metodos
+        double porcentaje = Double.parseDouble(numero);
+        if(porcentaje < 1 || porcentaje > 99){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número entre el 1 y el 99.");
+            return;
+        }
+
+        //Si ingresan si en el aviso, pasa a los siguientes if, si ingresan no vuelve a la ventana tarifas
+        int verifico = JOptionPane.showConfirmDialog(this,"Si modifica las tarifas se aplicará a todas las categorías "
+                     + "y zonas.\n¿Desea continuar?", "¡ATENCIÓN!", JOptionPane.YES_NO_OPTION);
+        if(verifico != JOptionPane.YES_OPTION){
+            VentanaModificarTarifas nueva = new VentanaModificarTarifas(sistema);
+            nueva.setVisible(true);
+            this.dispose();
+        }
+    
+        //Aca se llama al metodo que hace los calculos y se le pasa una palabra y el porcentaje
+        if(Aumentar.isSelected()){
+            sistema.getManagerDatos().modificarTarifas("Aumentar", porcentaje);
+            JOptionPane.showMessageDialog(this, "Tarifas aumentadas correctamente.");
+        } 
+        else if(Disminuir.isSelected()){
+            sistema.getManagerDatos().modificarTarifas("Disminuir", porcentaje);
+            JOptionPane.showMessageDialog(this, "Tarifas reducidas correctamente.");
+        }
+        
+        //Se vuelve a la ventana tarifas
+        VentanaTarifas nueva = new VentanaTarifas(sistema);
+        nueva.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_MoodificarTarifas
+
+    private void Cancelar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancelar
+        VentanaTarifas nueva = new VentanaTarifas(sistema);
+        nueva.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_Cancelar
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton Aumentar;
+    private javax.swing.ButtonGroup BotonDecide;
+    private javax.swing.JButton Cancelar;
     private javax.swing.JRadioButton Disminuir;
     private javax.swing.JButton Modificar;
     private javax.swing.JTextField Porcentaje;

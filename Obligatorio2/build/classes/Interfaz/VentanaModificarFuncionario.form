@@ -51,9 +51,9 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="nombreA" alignment="0" max="32767" attributes="0"/>
                                   <Component id="celularA" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="numeroA" pref="64" max="32767" attributes="0"/>
+                                  <Component id="numeroA" pref="58" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="173" max="32767" attributes="0"/>
+                              <EmptySpace pref="167" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="CelularN" min="-2" max="-2" attributes="0"/>
@@ -139,18 +139,27 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="Nombre">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Nombre Actual:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Celular">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Celular Actual:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Numero">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Numero Actual:"/>
       </Properties>
@@ -188,18 +197,27 @@
     </Component>
     <Component class="javax.swing.JLabel" name="NombreN">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Nombre Nuevo:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="CelularN">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Celular Nuevo:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="CorreoN">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Numero Nuevo:"/>
       </Properties>
@@ -212,12 +230,18 @@
     </Component>
     <Component class="javax.swing.JLabel" name="Anio">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="A&#xf1;o Actual:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="AnioN">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="A&#xf1;o Nuevo:"/>
       </Properties>

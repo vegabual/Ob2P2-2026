@@ -373,5 +373,46 @@ public class ManagerDatos {
 
         arch.cerrar();
     }
+    //Metodo que se usa para modificar las tarifas segun el porcentaje
+    public boolean modificarTarifas(String accion, double porcentaje){
+
+        boolean seGuardoOk = false;
+        double aux = 0; //Auxiliar para hacer las operaciones
+        
+        if(accion.equals("Aumentar")){ //Para aumento de tarifas
+            aux = 1 + (porcentaje/100); //Sumo 1 (seria el precio actual) mas el porcentaje calculado (lo que le aumento al precio)
+        }
+        else if(accion.equals("Disminuir")){ //Para disminuir tarifas
+            aux = 1 - (porcentaje/100); //Idem al aumento pero restando el porcentaje al precio original
+        }
+        
+        //Saco de la lista las tarifas
+        for(int i = 0; i < this.getTarifas().size(); i++){
+            Tarifa tarifa = this.getTarifas().get(i);
+            //Saco el precio actual, lo modifico y lo guardo
+            tarifa.setPrecioCat1(Math.round(tarifa.getPrecioCat1() * aux));
+            tarifa.setPrecioCat2(Math.round(tarifa.getPrecioCat2() * aux));
+            tarifa.setPrecioCat3(Math.round(tarifa.getPrecioCat3() * aux));
+            tarifa.setPrecioCat4(Math.round(tarifa.getPrecioCat4() * aux));
+            seGuardoOk = true;
+        }
+        guardarTarifasModificadas(); //Llamo al metodo que las guarda en la lista de nuevo
+        return seGuardoOk;
+    }
+        
+    //Metodo para guardar las tarfias modificadas en el archivo
+    public void guardarTarifasModificadas(){
+
+        ArchivoGrabacion arch = new ArchivoGrabacion(ARCHIVO_TARIFAS, false);
+
+        for(int i = 0; i < this.getTarifas().size(); i++){
+            Tarifa tarifa = this.getTarifas().get(i);
+            String linea = tarifa.getNombre() + "#" + tarifa.getPrecioCat1() + "," + tarifa.getPrecioCat2() + ","
+                         + tarifa.getPrecioCat3() + "," + tarifa.getPrecioCat4();
+            arch.grabarLinea(linea);   
+        }
+        arch.cerrar();
+    }
+       
     //</editor-fold>
 }

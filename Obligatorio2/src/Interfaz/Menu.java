@@ -145,7 +145,6 @@ public class Menu extends javax.swing.JFrame {
     private void Tarifa(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tarifa
         VentanaTarifas nueva = new VentanaTarifas(sistema);
         nueva.setVisible(true); 
-        dispose();
     }//GEN-LAST:event_Tarifa
 
     private void Ingreso(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ingreso
