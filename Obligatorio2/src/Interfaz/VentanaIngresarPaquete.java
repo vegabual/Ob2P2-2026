@@ -5,7 +5,6 @@
 package Interfaz;
 
 import Utils.Utils;
-import static Utils.Utils.stringIsParseableToInt;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
@@ -17,6 +16,7 @@ import Controladores.Sistema;
 import Excepciones.ErrorFechaNoValidaException;
 import java.awt.event.KeyEvent;
 import javax.swing.JTextField;
+import static Utils.Utils.stringEsParseableAInt;
 
 /**
  *
@@ -247,7 +247,7 @@ public class VentanaIngresarPaquete extends javax.swing.JFrame {
         String depto = cmbDepartamento.getSelectedItem().toString();
         String pesoStr = txtPeso.getText().trim();
         
-        if(depto != "Seleccionar" && stringIsParseableToInt(pesoStr) && Integer.parseInt(pesoStr) > 0){
+        if(depto != "Seleccionar" && stringEsParseableAInt(pesoStr) && Integer.parseInt(pesoStr) > 0){
             int peso = Integer.parseInt(pesoStr);
             String precioCalculado = "$ " + this.getSistema().precioPaquete(depto, peso);
             lblPrecioCalculado.setText(precioCalculado);
@@ -304,11 +304,11 @@ public class VentanaIngresarPaquete extends javax.swing.JFrame {
     private void validarPeso(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_validarPeso
         String peso = txtPeso.getText();
         if(peso.length() > 0 && evt.getKeyCode() != KeyEvent.VK_ENTER){
-            if(stringIsParseableToInt(peso)){
+            if(stringEsParseableAInt(peso)){
                 this.calcularPrecio();
             } else{
                 JOptionPane.showMessageDialog(this, "Solo se pueden ingresar numeros enteros.", "Input inválido", ERROR_MESSAGE);
-                while(!stringIsParseableToInt(peso) && peso.length() > 0){
+                while(!stringEsParseableAInt(peso) && peso.length() > 0){
                     borrarUltimoChar(txtPeso);
                     peso = txtPeso.getText();
                 }
@@ -322,13 +322,13 @@ public class VentanaIngresarPaquete extends javax.swing.JFrame {
     private void validarDia(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_validarDia
         String dia = txtFechaDia.getText().trim();
         if(dia.length() > 0 && evt.getKeyCode() != KeyEvent.VK_ENTER){
-            boolean esValido = stringIsParseableToInt(dia) && Integer.parseInt(dia) > 0 && Integer.parseInt(dia) < 32;
+            boolean esValido = stringEsParseableAInt(dia) && Integer.parseInt(dia) > 0 && Integer.parseInt(dia) < 32;
             if(!esValido){ //Si el dia no es un numero, o no estra entre 1 y 31, mostrar mensaje de error y borrar el dato
                 JOptionPane.showMessageDialog(this, "Solo se pueden ingresar numeros del 1 al 31.", "Input inválido", ERROR_MESSAGE);
                 while(!esValido && dia.length() > 0){
                     borrarUltimoChar(txtFechaDia);
                     dia = txtFechaDia.getText().trim();
-                    esValido = stringIsParseableToInt(dia) && Integer.parseInt(dia) > 0 && Integer.parseInt(dia) < 32;
+                    esValido = stringEsParseableAInt(dia) && Integer.parseInt(dia) > 0 && Integer.parseInt(dia) < 32;
                 }
             }
         }
@@ -337,13 +337,13 @@ public class VentanaIngresarPaquete extends javax.swing.JFrame {
     private void validarMes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_validarMes
         String mes = txtFechaMes.getText().trim();
         if(mes.length() > 0 && evt.getKeyCode() != KeyEvent.VK_ENTER){
-            boolean esValido = stringIsParseableToInt(mes) && Integer.parseInt(mes) > 0 && Integer.parseInt(mes) < 13;
+            boolean esValido = stringEsParseableAInt(mes) && Integer.parseInt(mes) > 0 && Integer.parseInt(mes) < 13;
             if(!esValido){ //Si el dia no es un numero, o no estra entre 1 y 31, mostrar mensaje de error y borrar el dato
                 JOptionPane.showMessageDialog(this, "Solo se pueden ingresar numeros del 1 al 12.", "Input inválido", ERROR_MESSAGE);
                 while(!esValido && mes.length() > 0){
                     borrarUltimoChar(txtFechaMes);
                     mes = txtFechaMes.getText().trim();
-                    esValido = stringIsParseableToInt(mes) && Integer.parseInt(mes) > 0 && Integer.parseInt(mes) < 13;
+                    esValido = stringEsParseableAInt(mes) && Integer.parseInt(mes) > 0 && Integer.parseInt(mes) < 13;
                 }
             }
         }
@@ -352,13 +352,13 @@ public class VentanaIngresarPaquete extends javax.swing.JFrame {
     private void validarAnio(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_validarAnio
         String anio = txtFechaAnio.getText().trim();
         if(anio.length() > 0 && evt.getKeyCode() != KeyEvent.VK_ENTER){
-            boolean esValido = stringIsParseableToInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 4000;
+            boolean esValido = stringEsParseableAInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 4000;
             if(!esValido){ //Si el dia no es un numero, o no estra entre 1 y 31, mostrar mensaje de error y borrar el dato
                 JOptionPane.showMessageDialog(this, "Solo se pueden ingresar numeros del 0 al 3000.", "Input inválido", ERROR_MESSAGE);
                 while(!esValido && anio.length() > 0){
                     borrarUltimoChar(txtFechaAnio);
                     anio = txtFechaAnio.getText().trim();
-                    esValido = stringIsParseableToInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 4000;
+                    esValido = stringEsParseableAInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 4000;
                 }
             }
         }
@@ -375,7 +375,7 @@ public class VentanaIngresarPaquete extends javax.swing.JFrame {
         String depto = cmbDepartamento.getSelectedItem().toString();
         String pesoStr = txtPeso.getText().trim();
         
-        if(depto != "Seleccionar" && stringIsParseableToInt(pesoStr) && Integer.parseInt(pesoStr) > 0){
+        if(depto != "Seleccionar" && stringEsParseableAInt(pesoStr) && Integer.parseInt(pesoStr) > 0){
             int peso = Integer.parseInt(pesoStr);
             String precioCalculado = "$ " + this.getSistema().precioPaquete(depto, peso);
             lblPrecioCalculado.setText(precioCalculado);

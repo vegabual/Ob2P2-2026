@@ -143,28 +143,25 @@ public class VentanaIngresarFuncionario extends javax.swing.JFrame {
 
     private void GuardarFuncionario(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarFuncionario
 
-            String nombre = TextoNombre.getText().trim();
-            String celular = TextoCelular.getText().trim();
-            String numero = TextoNumero.getText().trim();
-            String anio = TextoAnio.getText().trim();
+        String nombre = TextoNombre.getText().trim();
+        String celular = TextoCelular.getText().trim();
+        String numero = TextoNumero.getText().trim();
+        String anio = TextoAnio.getText().trim();
 
-            //Validar
-            if(nombre.isEmpty() || celular.isEmpty() || numero.isEmpty() || anio.isEmpty()){
-                JOptionPane.showMessageDialog(this, "Debe ingresar un nombre, un celular, un numero de funcionario y un año de ingreso.");
-                return;
-            }
-
+        //Validar
+        if(nombre.isEmpty() || celular.isEmpty() || numero.isEmpty() || anio.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un nombre, un celular, un numero de funcionario y un año de ingreso.");
+        } else {
             //Guardar en el sistema
             if(!sistema.guardarFuncionario(nombre, celular, numero, anio)){
                 JOptionPane.showMessageDialog(this, "Ya existe un cliente o funcionario con ese nombre, ingrese otro.");
-            }
-            
-            else{
+            } else{
                 JOptionPane.showMessageDialog(this, "Funcionario guardado correctamente.");
                 VentanaFuncionario nueva = new VentanaFuncionario(sistema);
                 nueva.setVisible(true);
                 this.dispose();
-            }            
+            }       
+        }
     }//GEN-LAST:event_GuardarFuncionario
 
 

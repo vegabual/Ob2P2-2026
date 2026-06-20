@@ -6,6 +6,7 @@ package Interfaz;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Controladores.Sistema;
+import Utils.Utils;
 
 public class VentanaModificarTarifas extends javax.swing.JFrame {
     
@@ -129,54 +130,41 @@ public class VentanaModificarTarifas extends javax.swing.JFrame {
         //Verifico que seleccionen un boton
         if(!Aumentar.isSelected() && !Disminuir.isSelected()){
             JOptionPane.showMessageDialog(this, "Debe seleccionar Aumentar o Disminuir.");
-            return;
-        }
-        
-        //Valido que haya un numero en el cuadro de texto
-        if(numero.isEmpty()){
+        } else if(numero.isEmpty()){ //Valido que haya un numero en el cuadro de texto
             JOptionPane.showMessageDialog(this, "Debe ingresar un número entre 1 y 99.");
-            return;
-        }
-        
-        //Valido que se ingrese solo un numero
-        try{
-            double valido = Double.parseDouble(numero);
-        }
-        catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "Debe ingresar un número entre el 1 y el 99.");
-            return;
-        }
-        
-       //Valido que sea entre 1 y 99 para que funcionen bien los metodos
-        double porcentaje = Double.parseDouble(numero);
-        if(porcentaje < 1 || porcentaje > 99){
-            JOptionPane.showMessageDialog(this, "Debe ingresar un número entre el 1 y el 99.");
-            return;
-        }
+        } else if(!Utils.stringIsParseableToDouble(numero)){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un número entre 1 y 99.");
+        } else{
+            //Valido que sea entre 1 y 99 para que funcionen bien los metodos
+            double porcentaje = Double.parseDouble(numero);
+            if(porcentaje < 1 || porcentaje > 99){
+                JOptionPane.showMessageDialog(this, "Debe ingresar un número entre 1 y 99.");
+            } else {
+                //Si ingresan si en el aviso, pasa a los siguientes if, si ingresan no vuelve a la ventana tarifas
+                int verifico = JOptionPane.showConfirmDialog(this,"Si modifica las tarifas se aplicará a todas las categorías "
+                             + "y zonas.\n¿Desea continuar?", "¡ATENCIÓN!", JOptionPane.YES_NO_OPTION);
+                
+                if(verifico == JOptionPane.YES_OPTION){
+                    //Aca se llama al metodo que hace los calculos y se le pasa una palabra y el porcentaje
+                    if(Aumentar.isSelected()){
+                        sistema.getManagerDatos().modificarTarifas("Aumentar", porcentaje);
+                        JOptionPane.showMessageDialog(this, "Tarifas aumentadas correctamente.");
+                    } 
+                    else if(Disminuir.isSelected()){
+                        sistema.getManagerDatos().modificarTarifas("Disminuir", porcentaje);
+                        JOptionPane.showMessageDialog(this, "Tarifas reducidas correctamente.");
+                    }
 
-        //Si ingresan si en el aviso, pasa a los siguientes if, si ingresan no vuelve a la ventana tarifas
-        int verifico = JOptionPane.showConfirmDialog(this,"Si modifica las tarifas se aplicará a todas las categorías "
-                     + "y zonas.\n¿Desea continuar?", "¡ATENCIÓN!", JOptionPane.YES_NO_OPTION);
-        if(verifico != JOptionPane.YES_OPTION){
-            VentanaModificarTarifas nueva = new VentanaModificarTarifas(sistema);
-            nueva.setVisible(true);
-            this.dispose();
+                    //Se vuelve a la ventana tarifas
+                    VentanaTarifas nueva = new VentanaTarifas(sistema);
+                    nueva.setVisible(true);
+                    this.dispose();
+                } else { //Reiniciar valores
+                    BotonDecide.clearSelection();
+                    Porcentaje.setText("");
+                }
+            }
         }
-    
-        //Aca se llama al metodo que hace los calculos y se le pasa una palabra y el porcentaje
-        if(Aumentar.isSelected()){
-            sistema.getManagerDatos().modificarTarifas("Aumentar", porcentaje);
-            JOptionPane.showMessageDialog(this, "Tarifas aumentadas correctamente.");
-        } 
-        else if(Disminuir.isSelected()){
-            sistema.getManagerDatos().modificarTarifas("Disminuir", porcentaje);
-            JOptionPane.showMessageDialog(this, "Tarifas reducidas correctamente.");
-        }
-        
-        //Se vuelve a la ventana tarifas
-        VentanaTarifas nueva = new VentanaTarifas(sistema);
-        nueva.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_MoodificarTarifas
 
     private void Cancelar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cancelar

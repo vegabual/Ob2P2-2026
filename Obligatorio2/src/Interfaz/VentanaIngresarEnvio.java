@@ -13,7 +13,6 @@ import Modelo.Funcionario;
 import Modelo.Paquete;
 import Modelo.Tarifa;
 import Utils.Utils;
-import static Utils.Utils.stringIsParseableToInt;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -26,6 +25,7 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
+import static Utils.Utils.stringEsParseableAInt;
 
 /**
  *
@@ -435,13 +435,13 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
     private void validarDia(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_validarDia
         String dia = txtDia.getText().trim();
         if(dia.length() > 0 && evt.getKeyCode() != KeyEvent.VK_ENTER){
-            boolean esValido = stringIsParseableToInt(dia) && Integer.parseInt(dia) > 0 && Integer.parseInt(dia) < 32;
+            boolean esValido = stringEsParseableAInt(dia) && Integer.parseInt(dia) > 0 && Integer.parseInt(dia) < 32;
             if(!esValido){ //Si el dia no es un numero, o no estra entre 1 y 31, mostrar mensaje de error y borrar el dato
                 JOptionPane.showMessageDialog(this, "Solo se pueden ingresar numeros del 1 al 31.", "Input inválido", ERROR_MESSAGE);
                 while(!esValido && dia.length() > 0){
                     borrarUltimoChar(txtDia);
                     dia = txtDia.getText().trim();
-                    esValido = stringIsParseableToInt(dia) && Integer.parseInt(dia) > 0 && Integer.parseInt(dia) < 32;
+                    esValido = stringEsParseableAInt(dia) && Integer.parseInt(dia) > 0 && Integer.parseInt(dia) < 32;
                 }
             }
         }
@@ -450,13 +450,13 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
     private void validarMes(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_validarMes
         String mes = txtMes.getText().trim();
         if(mes.length() > 0 && evt.getKeyCode() != KeyEvent.VK_ENTER){
-            boolean esValido = stringIsParseableToInt(mes) && Integer.parseInt(mes) > 0 && Integer.parseInt(mes) < 13;
+            boolean esValido = stringEsParseableAInt(mes) && Integer.parseInt(mes) > 0 && Integer.parseInt(mes) < 13;
             if(!esValido){ //Si el dia no es un numero, o no estra entre 1 y 31, mostrar mensaje de error y borrar el dato
                 JOptionPane.showMessageDialog(this, "Solo se pueden ingresar numeros del 1 al 12.", "Input inválido", ERROR_MESSAGE);
                 while(!esValido && mes.length() > 0){
                     borrarUltimoChar(txtMes);
                     mes = txtMes.getText().trim();
-                    esValido = stringIsParseableToInt(mes) && Integer.parseInt(mes) > 0 && Integer.parseInt(mes) < 13;
+                    esValido = stringEsParseableAInt(mes) && Integer.parseInt(mes) > 0 && Integer.parseInt(mes) < 13;
                 }
             }
         }
@@ -465,13 +465,13 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
     private void validarAnio(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_validarAnio
         String anio = txtAnio.getText().trim();
         if(anio.length() > 0 && evt.getKeyCode() != KeyEvent.VK_ENTER){
-            boolean esValido = stringIsParseableToInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 4000;
+            boolean esValido = stringEsParseableAInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 4000;
             if(!esValido){ //Si el dia no es un numero, o no estra entre 1 y 31, mostrar mensaje de error y borrar el dato
                 JOptionPane.showMessageDialog(this, "Solo se pueden ingresar numeros del 0 al 3000.", "Input inválido", ERROR_MESSAGE);
                 while(!esValido && anio.length() > 0){
                     borrarUltimoChar(txtAnio);
                     anio = txtAnio.getText().trim();
-                    esValido = stringIsParseableToInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 4000;
+                    esValido = stringEsParseableAInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 4000;
                 }
             }
         }

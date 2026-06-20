@@ -49,11 +49,11 @@ public class Utils {
     }
     
     /**
-     * Method to check if a string is parseable to int without risk of an exception
-     * @param str String to convert
-     * @return if is parseable or not
+     * Metodo para chequear si un string es parseable a entero sin riesgo de una excepcion
+     * @param str String a convertir
+     * @return si es parseable o no
      */
-    public static boolean stringIsParseableToInt(String str){
+    public static boolean stringEsParseableAInt(String str){
         try{
             Integer.parseInt(str);
             return true;
@@ -62,6 +62,22 @@ public class Utils {
             return false;
         }
     }
+    
+    /**
+     * Metodo para chequear si un string es parseable a double sin riesgo de una excepcion
+     * @param str String a convertir
+     * @return si es parseable o no
+     */
+    public static boolean stringIsParseableToDouble(String str){
+        try{
+            Double.parseDouble(str);
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
+    
     
     public static boolean arrayContieneInt(int[] arr, int numero){
         boolean contiene = false;
