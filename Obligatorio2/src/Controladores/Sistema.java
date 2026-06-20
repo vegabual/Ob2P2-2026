@@ -323,6 +323,17 @@ public class Sistema {
         
         return filtrados;
     }
+    
+    public void RecibirEnvio(Envio envio, ArrayList<Paquete> paquetesABorrar) {
+        for(Paquete paquete : paquetesABorrar){
+            envio.removerPaquete(paquete.getId());
+        }
+        envio.cerrarEnvio();
+        
+        this.getManagerDatos().guardarModificacionPaqueteEnArchivo();
+        this.getManagerDatos().guardarModificacionEnvioEnArchivo();
+    }
     //</editor-fold>
+
     
 }//Class

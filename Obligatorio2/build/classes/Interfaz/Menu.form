@@ -23,10 +23,16 @@
         <Menu class="javax.swing.JMenu" name="Datos">
           <Properties>
             <Property name="text" type="java.lang.String" value="Datos"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="Clientes">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Clientes"/>
               </Properties>
               <Events>
@@ -35,6 +41,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Funcionarios">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Funcionarios"/>
               </Properties>
               <Events>
@@ -43,6 +52,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Tarifa">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Tarifa"/>
               </Properties>
               <Events>
@@ -54,10 +66,16 @@
         <Menu class="javax.swing.JMenu" name="Empleados">
           <Properties>
             <Property name="text" type="java.lang.String" value="Paquetes"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="Ingreso">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Ver/Ingresar"/>
               </Properties>
               <Events>
@@ -66,6 +84,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Envio">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Env&#xed;o"/>
               </Properties>
               <Events>
@@ -74,6 +95,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Recepcion">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Recepci&#xf3;n"/>
               </Properties>
               <Events>
@@ -85,10 +109,16 @@
         <Menu class="javax.swing.JMenu" name="Managers">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reportes"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="Estado">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Paquetes por Estado"/>
               </Properties>
               <Events>
@@ -97,6 +127,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Cliente">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Consulta por Cliente"/>
               </Properties>
               <Events>
@@ -105,6 +138,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Transacciones">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Log de Transacciones"/>
               </Properties>
               <Events>

@@ -65,39 +65,53 @@ public class VentanaModificarCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        Nombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Nombre.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         Nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Nombre.setText("Nombre Actual:");
 
-        Celular.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Celular.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         Celular.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Celular.setText("Celular Actual:");
 
-        Correo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Correo.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         Correo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Correo.setText("Correo Actual:");
 
+        Guardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Guardar.setText("Guardar");
         Guardar.addActionListener(this::ModificarCliente);
 
+        Cancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Cancelar.setText("Cancelar");
         Cancelar.addActionListener(this::Cancelar);
 
-        lbl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl.setText("Ingrese los datos a modificar:");
 
-        NombreN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        TextoNombre.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+
+        TextoCelular.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+
+        TextoCorreo.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+
+        NombreN.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         NombreN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NombreN.setText("Nombre Nuevo:");
 
-        CelularN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        CelularN.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         CelularN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CelularN.setText("Celular Nuevo:");
 
-        CorreoN.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        CorreoN.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         CorreoN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CorreoN.setText("Correo Nuevo:");
+
+        nombreA.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+
+        celularA.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+
+        correoA.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         lbl1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -107,20 +121,28 @@ public class VentanaModificarCliente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 189, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Nombre)
-                    .addComponent(Celular)
-                    .addComponent(Correo))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Nombre)
+                            .addComponent(Celular)
+                            .addComponent(Correo))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombreA, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                            .addComponent(nombreA, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                             .addComponent(celularA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(correoA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(CelularN)
@@ -131,23 +153,8 @@ public class VentanaModificarCliente extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TextoCorreo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TextoCelular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TextoNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(179, 179, 179)
-                        .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 189, Short.MAX_VALUE))
+                            .addComponent(TextoNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +179,7 @@ public class VentanaModificarCliente extends javax.swing.JFrame {
                     .addComponent(TextoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CorreoN)
                     .addComponent(correoA))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

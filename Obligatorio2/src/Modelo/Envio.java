@@ -6,7 +6,7 @@ package Modelo;
 import Utils.Utils;
 import java.util.ArrayList;
 
-public class Envio {
+public class Envio implements Comparable<Envio>{
     private Funcionario funcionario; //PARA EL METODO DE ENVIO
     private int numeroEnvio;
     private Fecha fechaEnvio;
@@ -99,15 +99,33 @@ public class Envio {
         }
     }
     
-    private void removerPaquete(String id){
+    public void removerPaquete(String id){
         Paquete paquete = Utils.encontrarPaquete(this.getPaquetes(), id);
         if(paquete != null){
+            paquete.aPendiente();
             this.getPaquetes().remove(paquete);
+        }
+    }
+    
+    public void cerrarEnvio(){
+        this.setEstado("CERRADO");
+        for(Paquete paquete: this.getPaquetes()){
+            paquete.aRecibido();
         }
     }
     
     public String aGuardar(){
         String paquetesString = Utils.listaPaquetesAStringDeID(paquetes, ',');
-        return this.getNumeroEnvio() + "--" + this.getFuncionario().toString() + "--" + this.getFechaEnvio().toString() + "--"  + this.getNombreZona() + "--" + this.getEstado() + "--" + paquetesString;
+        return this.getNumeroEnvio() + "--" + this.getFuncionario().getNombre() + "--" + this.getFechaEnvio().toString() + "--"  + this.getNombreZona() + "--" + this.getEstado() + "--" + paquetesString;
+    }
+
+    @Override
+    public int compareTo(Envio o) {
+        return o.getNumeroEnvio() - this.getNumeroEnvio();
+    }
+    
+    @Override
+    public String toString(){
+        return "Envio " + this.getNumeroEnvio() + " - Fecha: " + this.getFechaEnvio().toString() + " - Zona: " + this.getNombreZona() + " - " + this.getPaquetes().size() + " paquetes.";
     }
 }

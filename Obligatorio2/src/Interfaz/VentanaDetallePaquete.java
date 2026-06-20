@@ -81,44 +81,64 @@ public class VentanaDetallePaquete extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Detalle de paquete");
 
+        lblIDTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblIDTitulo.setText("Identificador:");
 
+        lblClienteTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblClienteTitulo.setText("Cliente:");
 
+        lblFechaTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblFechaTitulo.setText("Fecha:");
 
+        lblDestinatarioTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDestinatarioTitulo.setText("Destinatario:");
 
+        lblCelularTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblCelularTitulo.setText("Celular:");
 
+        lblCorreoTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblCorreoTitulo.setText("Correo:");
 
+        lblDireccionTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDireccionTitulo.setText("Direccion:");
 
+        lblDestinoTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDestinoTitulo.setText("Destino (departamento):");
 
+        lblPesoTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblPesoTitulo.setText("Peso:");
 
+        lblPrecioTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblPrecioTitulo.setText("Precio:");
 
+        lblID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblID.setText("0");
 
+        lblDestino.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDestino.setText("Depto (zona)");
 
+        lblClienteNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblClienteNombre.setText("Nombre");
 
+        lblClienteCelular.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblClienteCelular.setText("Cel");
 
+        lblClienteCorreo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblClienteCorreo.setText("correo@dominio.com");
 
+        lblFecha.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblFecha.setText("11/11/11");
 
+        lblDestinatario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDestinatario.setText("Nombre");
 
+        lblDireccion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblDireccion.setText("Calle 123");
 
+        lblPeso.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblPeso.setText("0 grs.");
 
+        lblPrecio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblPrecio.setText("$ 0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,7 +229,7 @@ public class VentanaDetallePaquete extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPrecioTitulo)
                     .addComponent(lblPrecio))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

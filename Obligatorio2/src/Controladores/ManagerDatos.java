@@ -114,6 +114,7 @@ public class ManagerDatos {
                 this.cargarClientes(); //El this es del sistema seleccionado
                 this.cargarFuncionarios();
                 this.cargarPaquetes();
+                this.cargarEnvios();
             }
             
         } catch(Exception e){
@@ -126,6 +127,8 @@ public class ManagerDatos {
             archClientes.cerrar(); 
             archFuncionarios.cerrar();
             archPaquetes.cerrar();
+            archEnvios.cerrar();
+            archTarifas.cerrar();
         }
     }
     

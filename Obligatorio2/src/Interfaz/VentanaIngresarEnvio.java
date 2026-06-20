@@ -6,7 +6,6 @@ package Interfaz;
 
 import Controladores.Sistema;
 import Excepciones.ErrorFechaNoValidaException;
-import Modelo.Cliente;
 import Modelo.Envio;
 import Modelo.Fecha;
 import Modelo.Funcionario;
@@ -19,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
@@ -35,7 +33,6 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaIngresarEnvio.class.getName());
     private Sistema sistema;
-    private int clickedTimes;
     
     public Sistema getSistema() {
         return sistema;
@@ -130,50 +127,64 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
+        lblNumeroEnvio.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblNumeroEnvio.setText("Número de envio:");
 
+        lblID.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblID.setText("1");
 
+        lblFecha.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblFecha.setText("Fecha de envio:");
 
+        txtAnio.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtAnio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 validarAnio(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("/");
 
+        txtMes.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtMes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 validarMes(evt);
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("/");
 
+        txtDia.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtDia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 validarDia(evt);
             }
         });
 
+        lblZona.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblZona.setText("Zona:");
 
+        cmbZona.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         cmbZona.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbZona.addActionListener(this::cmbZonaActionPerformed);
 
+        lblPaquetes.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblPaquetes.setText("Paquetes a enviar:");
 
+        lstPendientes.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lstPendientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstPendientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -183,12 +194,15 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
         lstPendientes.addListSelectionListener(this::lstPendientesValueChanged);
         jScrollPane2.setViewportView(lstPendientes);
 
+        lblPendientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblPendientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPendientes.setText("Pendientes");
 
+        lblAEnviar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblAEnviar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAEnviar.setText("A enviar");
 
+        lstAEnviar.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lstAEnviar.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstAEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -198,31 +212,41 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
         lstAEnviar.addListSelectionListener(this::lstAEnviarValueChanged);
         jScrollPane3.setViewportView(lstAEnviar);
 
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnAgregar.setText(">>");
         btnAgregar.setEnabled(false);
         btnAgregar.addActionListener(this::btnAgregarActionPerformed);
 
+        btnRemover.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnRemover.setText("<<");
         btnRemover.setEnabled(false);
         btnRemover.addActionListener(this::btnRemoverActionPerformed);
 
+        lblInfoVerDetalles.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblInfoVerDetalles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblInfoVerDetalles.setText("Haga doble click para ver detalles del paquete");
 
+        lblTotalPaquetesTitulo.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblTotalPaquetesTitulo.setText("Paquetes a enviar:");
 
+        lblPesoTotalTitulo.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblPesoTotalTitulo.setText("Peso total del envio:");
 
+        lblTotalPaquetes.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblTotalPaquetes.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTotalPaquetes.setText("0");
 
+        lblPesoTotal.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblPesoTotal.setText("0 grs.");
 
+        lblNoPaquetes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNoPaquetes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNoPaquetes.setText("Seleccionar una zona con paquetes");
 
+        lblFuncionario.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblFuncionario.setText("Funcionario:");
 
+        cmbFuncionarios.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         cmbFuncionarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -268,7 +292,7 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
                             .addComponent(lblZona)
                             .addComponent(lblPaquetes)
                             .addComponent(lblFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cmbFuncionarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmbZona, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -314,7 +338,7 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
                     .addComponent(cmbZona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addComponent(lblNoPaquetes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPendientes)
                     .addComponent(lblAEnviar, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -332,8 +356,8 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblInfoVerDetalles)
                 .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotalPaquetesTitulo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTotalPaquetesTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblTotalPaquetes))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -343,7 +367,7 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
-                .addContainerGap())
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -375,6 +399,7 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Ocurrió un error al guardar el envío.", "Error al guardar envío", ERROR_MESSAGE);
                 }
                 else{
+                    JOptionPane.showMessageDialog(this, "Envío guardado correctamente.");
                     this.dispose();
                 } 
             } else{
@@ -393,6 +418,11 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    /**
+     * Obtiene una lista de paquetes de un Jlist
+     * @param lista Jlist a la que se le tienen que obtener sus paquetes
+     * @return ArrayList con los paquetes del jlist
+     */
     public ArrayList<Paquete> getPaquetesDeLista(JList<Paquete> lista){
         ListModel<Paquete> modelo = lista.getModel();
         ArrayList<Paquete> items = new ArrayList<Paquete>(); // Paquete[modelo.getSize() + 1];
@@ -413,6 +443,11 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
+    /**
+     * Agrega un paquete a la listData de un jlist
+     * @param paquete Paquete a agregar
+     * @param lista Lista a la que se tiene que agregar el paquete
+     */
     private void agregarALstPaquetes(Paquete paquete, JList<Paquete> lista){
         ListModel<Paquete> modelo = lista.getModel();
         ArrayList<Paquete> items = getPaquetesDeLista(lista);
@@ -423,6 +458,11 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
         lista.setListData(items.toArray(Paquete[]::new));
     }
     
+    /**
+     * Elimina un paquete de la listData de un jlist
+     * @param paquete Paquete a eliminar
+     * @param lista Lista a la que se le debe eliminar el paquete
+     */
     private void eliminarDeLstPaquetes(Paquete paquete, JList<Paquete> lista){
         ListModel<Paquete> modelo = lista.getModel();
         ArrayList<Paquete> items = getPaquetesDeLista(lista);
@@ -488,6 +528,8 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
         if(!zona.equalsIgnoreCase("Seleccionar")){
             ArrayList<Paquete> paquetesPendientes = this.getSistema().getPaquetesPorEstadoYZona("PENDIENTE", zona);
             if(paquetesPendientes.size() > 0){
+                Collections.sort(paquetesPendientes);
+                
                 lstPendientes.setListData(paquetesPendientes.toArray(Paquete[]::new));
 
                 lstAEnviar.setListData(new Paquete[0]);

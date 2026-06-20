@@ -64,15 +64,19 @@ public class Menu extends javax.swing.JFrame {
         BarraMenu.setToolTipText("");
 
         Datos.setText("Datos");
+        Datos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        Clientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Clientes.setText("Clientes");
         Clientes.addActionListener(this::Clientes);
         Datos.add(Clientes);
 
+        Funcionarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Funcionarios.setText("Funcionarios");
         Funcionarios.addActionListener(this::Funcionarios);
         Datos.add(Funcionarios);
 
+        Tarifa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Tarifa.setText("Tarifa");
         Tarifa.addActionListener(this::Tarifa);
         Datos.add(Tarifa);
@@ -80,15 +84,19 @@ public class Menu extends javax.swing.JFrame {
         BarraMenu.add(Datos);
 
         Empleados.setText("Paquetes");
+        Empleados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        Ingreso.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Ingreso.setText("Ver/Ingresar");
         Ingreso.addActionListener(this::Ingreso);
         Empleados.add(Ingreso);
 
+        Envio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Envio.setText("Envío");
         Envio.addActionListener(this::Envio);
         Empleados.add(Envio);
 
+        Recepcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Recepcion.setText("Recepción");
         Recepcion.addActionListener(this::Recepcion);
         Empleados.add(Recepcion);
@@ -96,15 +104,19 @@ public class Menu extends javax.swing.JFrame {
         BarraMenu.add(Empleados);
 
         Managers.setText("Reportes");
+        Managers.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        Estado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Estado.setText("Paquetes por Estado");
         Estado.addActionListener(this::R_Estado);
         Managers.add(Estado);
 
+        Cliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Cliente.setText("Consulta por Cliente");
         Cliente.addActionListener(this::R_Cliente);
         Managers.add(Cliente);
 
+        Transacciones.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Transacciones.setText("Log de Transacciones");
         Transacciones.addActionListener(this::Transacciones);
         Managers.add(Transacciones);
@@ -180,7 +192,12 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_Envio
 
     private void Recepcion(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Recepcion
-        //LLAMA VENTANA DE RECEPCIONES
+        if(this.getSistema().getEnvios().size() > 0){
+            VentanaRecepcion nueva = new VentanaRecepcion(sistema);
+            nueva.setVisible(true);       
+        } else {
+            JOptionPane.showMessageDialog(this, "No se puede realizar una recepcion hasta no cargar al menos un envío.", "No hay envíos cargados", ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_Recepcion
 
 

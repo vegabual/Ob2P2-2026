@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/repos/Ob2P2-2026/Obligatorio2/src/Modelo/Envio.java</file>
+            <file>file:/C:/repos/Ob2P2-2026/Obligatorio2/src/Interfaz/VentanaIngresarEnvio.java</file>
+            <file>file:/C:/repos/Ob2P2-2026/Obligatorio2/src/Interfaz/VentanaIngresarPaquete.java</file>
+            <file>file:/C:/repos/Ob2P2-2026/Obligatorio2/src/Modelo/Paquete.java</file>
+            <file>file:/C:/repos/Ob2P2-2026/Obligatorio2/src/Controladores/ManagerDatos.java</file>
+            <file>file:/C:/repos/Ob2P2-2026/Obligatorio2/src/Controladores/Sistema.java</file>
+            <file>file:/C:/repos/Ob2P2-2026/Obligatorio2/src/Interfaz/Menu.java</file>
+            <file>file:/C:/repos/Ob2P2-2026/Obligatorio2/src/Interfaz/VentanaPrincipal.java</file>
+            <file>file:/C:/repos/Ob2P2-2026/Obligatorio2/src/Modelo/Fecha.java</file>
+            <file>file:/C:/repos/Ob2P2-2026/Obligatorio2/src/Utils/Utils.java</file>
+            <file>file:/C:/repos/Ob2P2-2026/Obligatorio2/src/obligatorio2/Obligatorio2.java</file>
+        </group>
     </open-files>
 </project-private>

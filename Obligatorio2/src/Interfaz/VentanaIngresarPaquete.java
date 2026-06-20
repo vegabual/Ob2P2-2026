@@ -83,59 +83,84 @@ public class VentanaIngresarPaquete extends javax.swing.JFrame {
         setTitle("Nuevo Paquete");
         setUndecorated(true);
 
-        lblCliente.setText("Cliente");
+        lblCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblCliente.setText("Cliente:");
 
-        lblId1.setText("Identificador");
+        lblId1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblId1.setText("Identificador:");
 
-        lblFecha.setText("Fecha (dd/mm/aaaa o dd/mm/aa)");
+        lblFecha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblFecha.setText("Fecha (dd/mm/aaaa o dd/mm/aa):");
 
-        lblDestinatario.setText("Destinatario");
+        lblDestinatario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDestinatario.setText("Destinatario:");
 
-        lblDepartamento.setText("Departamento");
+        lblDepartamento.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDepartamento.setText("Departamento:");
 
-        lblDireccion.setText("Direccion");
+        lblDireccion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDireccion.setText("Dirección:");
 
-        lblPeso.setText("Peso (grs)");
+        lblPeso.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPeso.setText("Peso (grs):");
 
+        lblPrecio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblPrecio.setText("Precio calculado:");
 
+        txtId.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+
+        cmbCliente.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        txtDireccion.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+
+        cmbDepartamento.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         cmbDepartamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbDepartamento.addActionListener(this::calcularPrecios);
 
+        txtPeso.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtPeso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 validarPeso(evt);
             }
         });
 
+        lblPrecioCalculado.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblPrecioCalculado.setText("Ingresar departamento y peso para calcular");
 
+        txtDestinatario.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
+        btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
 
+        lblSepDia.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblSepDia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSepDia.setText("/");
 
+        txtFechaDia.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtFechaDia.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 validarDia(evt);
             }
         });
 
+        lblSepMes.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblSepMes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSepMes.setText("/");
 
+        txtFechaMes.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtFechaMes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 validarMes(evt);
             }
         });
 
+        txtFechaAnio.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         txtFechaAnio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 validarAnio(evt);
@@ -231,7 +256,7 @@ public class VentanaIngresarPaquete extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnGuardar))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -283,7 +308,7 @@ public class VentanaIngresarPaquete extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Ya existe un Paquete con ese identificador, ingrese otro.", "Error al guardar paquete", ERROR_MESSAGE); //Pide otro nombre
                 }
                 else{
-                    JOptionPane.showMessageDialog(this, "Paquete ingresado correctamente.");
+                    JOptionPane.showMessageDialog(this, "Paquete guardado correctamente.");
                     VentanaPaquete nueva = new VentanaPaquete(sistema);
                     nueva.setVisible(true);
                     this.dispose();

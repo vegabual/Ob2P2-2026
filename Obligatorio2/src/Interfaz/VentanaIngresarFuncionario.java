@@ -63,27 +63,40 @@ public class VentanaIngresarFuncionario extends javax.swing.JFrame {
         Anio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Anio.setText("Año de Ingreso");
 
+        Guardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Guardar.setText("Guardar");
         Guardar.addActionListener(this::GuardarFuncionario);
 
+        Cancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Cancelar.setText("Cancelar");
         Cancelar.addActionListener(this::Cancelar);
 
-        lbl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl.setText("Ingrese los siguientes datos:");
+
+        TextoNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        TextoCelular.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        TextoNumero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         Numero1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Numero1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Numero1.setText("Número de Funcionario");
+
+        TextoAnio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -98,10 +111,7 @@ public class VentanaIngresarFuncionario extends javax.swing.JFrame {
                             .addComponent(TextoCelular, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TextoAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(lbl, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -129,7 +139,7 @@ public class VentanaIngresarFuncionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Guardar)
                     .addComponent(Cancelar))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
