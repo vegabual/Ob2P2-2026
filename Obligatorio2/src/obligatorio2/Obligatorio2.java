@@ -10,7 +10,7 @@ public class Obligatorio2 {
 
     public static void main(String[] args) {
         
-        //Inicio el programa en este main para configurar solo una vez que las ventnas se vean como windows y para la ventna del F1
+        //Inicio el programa en este main para configurar solo una vez que las ventnas se vean como windows
         //Inicio de codigo de chatgpt --> Para que todas las ventanas se vean como windows
         //Tambien aparece en el main de las clases de ventanas cuando se crean (lo elimino)
         try{            

@@ -11,6 +11,7 @@ import Modelo.Paquete;
 
 public class Utils {
     
+    //Metodo para encontrar un cliente con su nombre
     public static Cliente encontrarCliente(ArrayList<Cliente> clientes, String nombre){
         Cliente clienteEncontrado = null;
         Iterator<Cliente> it = clientes.iterator();
@@ -35,6 +36,7 @@ public class Utils {
         return paqueteEncontrado;
     }
     
+    //Me todo para encontrar un funcionario con su nombre
     public static Funcionario encontrarFuncionario(ArrayList<Funcionario> funcionarios, String nombre){
         
         Funcionario funcionarioEncontrado = null;

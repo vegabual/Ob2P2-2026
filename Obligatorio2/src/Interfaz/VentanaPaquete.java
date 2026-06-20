@@ -1,17 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+//Obligatorio 2 - Programación 2 - Primer Semestre 2026
+//(212712) Veronica Busiello - (354398) Lourdes Ayala
+
 package Interfaz;
 
 import javax.swing.table.DefaultTableModel;
 import Modelo.Paquete;
 import Controladores.Sistema;
 
-/**
- *
- * @author windows
- */
 public class VentanaPaquete extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPaquete.class.getName());
