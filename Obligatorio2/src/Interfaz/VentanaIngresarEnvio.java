@@ -1,7 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+//Obligatorio 2 - Programación 2 - Primer Semestre 2026
+//(212712) Veronica Busiello - (354398) Lourdes Ayala
+
 package Interfaz;
 
 import Controladores.Sistema;
@@ -25,10 +24,6 @@ import javax.swing.JTextField;
 import javax.swing.ListModel;
 import static Utils.Utils.stringEsParseableAInt;
 
-/**
- *
- * @author windows
- */
 public class VentanaIngresarEnvio extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaIngresarEnvio.class.getName());
@@ -111,7 +106,7 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
         lstAEnviar = new javax.swing.JList<>();
         btnAgregar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
-        lblInfoVerDetalles = new javax.swing.JLabel();
+        lblAyuda = new javax.swing.JLabel();
         lblTotalPaquetesTitulo = new javax.swing.JLabel();
         lblPesoTotalTitulo = new javax.swing.JLabel();
         lblTotalPaquetes = new javax.swing.JLabel();
@@ -119,6 +114,7 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
         lblNoPaquetes = new javax.swing.JLabel();
         lblFuncionario = new javax.swing.JLabel();
         cmbFuncionarios = new javax.swing.JComboBox<>();
+        lblTitulo = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -222,9 +218,9 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
         btnRemover.setEnabled(false);
         btnRemover.addActionListener(this::btnRemoverActionPerformed);
 
-        lblInfoVerDetalles.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblInfoVerDetalles.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblInfoVerDetalles.setText("Haga doble click para ver detalles del paquete");
+        lblAyuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblAyuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAyuda.setText("Haga doble click para ver detalles del paquete");
 
         lblTotalPaquetesTitulo.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblTotalPaquetesTitulo.setText("Paquetes a enviar:");
@@ -249,6 +245,10 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
         cmbFuncionarios.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         cmbFuncionarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Nuevo Envío");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -256,6 +256,7 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -277,21 +278,21 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblPendientes, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(lblAEnviar, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
-                    .addComponent(lblInfoVerDetalles, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblAyuda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblZona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPaquetes, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFuncionario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblZona, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblPaquetes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cmbFuncionarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -312,6 +313,8 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(20, 20, 20)
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNumeroEnvio)
                     .addComponent(lblID))
@@ -354,7 +357,7 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addComponent(btnRemover)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblInfoVerDetalles)
+                .addComponent(lblAyuda)
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTotalPaquetesTitulo, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -505,13 +508,13 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
     private void validarAnio(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_validarAnio
         String anio = txtAnio.getText().trim();
         if(anio.length() > 0 && evt.getKeyCode() != KeyEvent.VK_ENTER){
-            boolean esValido = stringEsParseableAInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 4000;
+            boolean esValido = stringEsParseableAInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 3000;
             if(!esValido){ //Si el dia no es un numero, o no estra entre 1 y 31, mostrar mensaje de error y borrar el dato
-                JOptionPane.showMessageDialog(this, "Solo se pueden ingresar numeros del 0 al 3000.", "Input inválido", ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Solo se pueden ingresar numeros del 1 al 2999.", "Input inválido", ERROR_MESSAGE);
                 while(!esValido && anio.length() > 0){
                     borrarUltimoChar(txtAnio);
                     anio = txtAnio.getText().trim();
-                    esValido = stringEsParseableAInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 4000;
+                    esValido = stringEsParseableAInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 3000;
                 }
             }
         }
@@ -631,16 +634,17 @@ public class VentanaIngresarEnvio extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblAEnviar;
+    private javax.swing.JLabel lblAyuda;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblFuncionario;
     private javax.swing.JLabel lblID;
-    private javax.swing.JLabel lblInfoVerDetalles;
     private javax.swing.JLabel lblNoPaquetes;
     private javax.swing.JLabel lblNumeroEnvio;
     private javax.swing.JLabel lblPaquetes;
     private javax.swing.JLabel lblPendientes;
     private javax.swing.JLabel lblPesoTotal;
     private javax.swing.JLabel lblPesoTotalTitulo;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTotalPaquetes;
     private javax.swing.JLabel lblTotalPaquetesTitulo;
     private javax.swing.JLabel lblZona;

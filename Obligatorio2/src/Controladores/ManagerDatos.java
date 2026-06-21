@@ -25,6 +25,7 @@ import java.util.StringTokenizer;
  */
 public class ManagerDatos {
     
+    //<editor-fold desc="Constantes">
     private static final String ARCHIVO_PAQUETES = "Paquetes.txt";
     private static final String ARCHIVO_CLIENTES = "Clientes.txt";
     private static final String ARCHIVO_FUNCIONARIOS = "Funcionarios.txt";
@@ -32,20 +33,23 @@ public class ManagerDatos {
     private static final String ARCHIVO_TARIFAS_DEFECTO = "Tarifas.txt";
     private static final String ARCHIVO_TARIFAS = "Tarifas_Guardadas.txt";
     private static final String ARCHIVO_LOGS = "Transacciones.log";
+    //</editor-fold>
     
+    //<editor-fold desc="Array de departamentos">
     private static String[] deptosNorte = {"ARTIGAS", "SALTO", "PAYSANDU", "RIVERA", "TACUAREMBO"};
     private static String[] deptosOeste = {"RIO NEGRO", "SORIANO", "COLONIA", "SAN JOSE"};
     private static String[] deptosEste = {"CERRO LARGO", "TREINTA Y TRES", "LAVALLEJA", "ROCHA", "MALDONADO"};
     private static String[] deptosSur = {"DURAZNO", "FLORES", "FLORIDA", "CANELONES", "MONTEVIDEO"};
+    //</editor-fold>
     
+    //<editor-fold desc="Propiedades">
     //Guardamos referencias a las listas que se van a necesitar guardar
     private ArrayList<Cliente> clientes;
     private ArrayList<Funcionario> funcionarios;
     private ArrayList<Paquete> paquetes;
     private ArrayList<Tarifa> tarifas;
     private ArrayList<Envio> envios;
-    
-    private Sistema sistema;
+    //</editor-fold>
 
     //<editor-fold desc="Getters and setters">
     private ArrayList<Cliente> getClientes() {
@@ -118,6 +122,8 @@ public class ManagerDatos {
                 this.cargarFuncionarios();
                 this.cargarPaquetes();
                 this.cargarEnvios();
+            } else{
+                this.limpiarLogs();
             }
             
         } catch(Exception e){
@@ -159,7 +165,9 @@ public class ManagerDatos {
         while(arch.hayMasLineas()){
             String linea = arch.linea();
             String[] datos = linea.split("--");
-            Funcionario funcionario = new Funcionario(datos[0], datos[1], datos[2], datos[3]);
+            int numero = Integer.parseInt(datos[2]);
+            int anio = Integer.parseInt(datos[3]);
+            Funcionario funcionario = new Funcionario(datos[0], datos[1], numero, anio);
             this.getFuncionarios().add(funcionario);
         }
         arch.cerrar();
@@ -222,10 +230,10 @@ public class ManagerDatos {
             String nombre = items[0];
             String[] precios = items[1].split(",");
             if(precios.length == 4){
-                double cat1 = Double.parseDouble(precios[0]);
-                double cat2 = Double.parseDouble(precios[1]);
-                double cat3 = Double.parseDouble(precios[2]);
-                double cat4 = Double.parseDouble(precios[3]);
+                int cat1 = Integer.parseInt(precios[0]);
+                int cat2 = Integer.parseInt(precios[1]);
+                int cat3 = Integer.parseInt(precios[2]);
+                int cat4 = Integer.parseInt(precios[3]);
                 
                 tarifa = new Tarifa(nombre, cat1, cat2, cat3, cat4, deptosPorZona(nombre));
             }
@@ -379,33 +387,7 @@ public class ManagerDatos {
 
         arch.cerrar();
     }
-    //Metodo que se usa para modificar las tarifas segun el porcentaje
-    public boolean modificarTarifas(String accion, double porcentaje){
-
-        boolean seGuardoOk = false;
-        double aux = 0; //Auxiliar para hacer las operaciones
-        
-        if(accion.equals("Aumentar")){ //Para aumento de tarifas
-            aux = 1 + (porcentaje/100); //Sumo 1 (seria el precio actual) mas el porcentaje calculado (lo que le aumento al precio)
-        }
-        else if(accion.equals("Disminuir")){ //Para disminuir tarifas
-            aux = 1 - (porcentaje/100); //Idem al aumento pero restando el porcentaje al precio original
-        }
-        
-        //Saco de la lista las tarifas
-        for(int i = 0; i < this.getTarifas().size(); i++){
-            Tarifa tarifa = this.getTarifas().get(i);
-            //Saco el precio actual, lo modifico y lo guardo
-            tarifa.setPrecioCat1(Math.round(tarifa.getPrecioCat1() * aux));
-            tarifa.setPrecioCat2(Math.round(tarifa.getPrecioCat2() * aux));
-            tarifa.setPrecioCat3(Math.round(tarifa.getPrecioCat3() * aux));
-            tarifa.setPrecioCat4(Math.round(tarifa.getPrecioCat4() * aux));
-            seGuardoOk = true;
-        }
-        guardarTarifasModificadas(); //Llamo al metodo que las guarda en la lista de nuevo
-        return seGuardoOk;
-    }
-        
+    
     //Metodo para guardar las tarfias modificadas en el archivo
     public void guardarTarifasModificadas(){
 
@@ -436,7 +418,7 @@ public class ManagerDatos {
         arch.cerrar();
     }
     
-    public ArrayList<String> obtenerLogs(){
+    public ArrayList<String> getLogs(){
         ArchivoLectura arch =  new ArchivoLectura(ARCHIVO_LOGS);
         ArrayList<String> logs = new ArrayList<String>();
         

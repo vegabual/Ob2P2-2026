@@ -8,6 +8,7 @@ import Modelo.Cliente;
 import Modelo.Paquete;
 import Utils.Utils;
 import java.util.ArrayList;
+import java.util.Comparator;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,8 +18,9 @@ public class VentanaReporteCliente2 extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaReporteCliente2.class.getName());
 
     private Sistema sistema; //Objeto sistema
-    private String nombreActual; ///////////
+    private String nombreActual; 
     
+    //<editor-fold desc="Getter y setters">
     public Sistema getSistema(){ //Para obtener el sistema
         return sistema;
     }
@@ -26,16 +28,27 @@ public class VentanaReporteCliente2 extends javax.swing.JFrame {
     public void setSistema(Sistema unSistema){ //Para guardar el sistema
         sistema = unSistema;
     }
+
+    public String getNombreActual() {
+        return nombreActual;
+    }
+
+    public void setNombreActual(String nombreActual) {
+        this.nombreActual = nombreActual;
+    }
+    //</editor-fold>
     
     public VentanaReporteCliente2(Sistema unSistema, Cliente unCliente) {
         initComponents();
         setLocationRelativeTo(null); //Para que la ventana aparezca en el medio de la pantalla
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //Para que no se cierre todo el programa y solo esta ventana
-        this.nombreActual = unCliente.getNombre();///////
+        this.setNombreActual(unCliente.getNombre());
         
         this.sistema = unSistema;
-        cargarPaquetesCliente();
-        
+        lblTitulo.setText("Reporte de paquetes del cliente " + this.getNombreActual() + ":");
+        cargarPaquetesPendientes();
+        cargarPaquetesEnviados();
+        cargarPaquetesRecibidos();
     }
 
     /**
@@ -47,14 +60,20 @@ public class VentanaReporteCliente2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaPaquetes = new javax.swing.JTable();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Reporte de paquetes por cliente:");
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ListaPaquetes3 = new javax.swing.JTable();
+        lblTitulo = new javax.swing.JLabel();
+        lblPendientes = new javax.swing.JLabel();
+        lblEnviados = new javax.swing.JLabel();
+        lblRecibidos = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstPaquetesPendientes = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstPaquetesRecibidos = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        lstPaquetesEnviados = new javax.swing.JTable();
 
         ListaPaquetes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,62 +86,118 @@ public class VentanaReporteCliente2 extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        ListaPaquetes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ListaPaquetesMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(ListaPaquetes);
+
+        ListaPaquetes3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(ListaPaquetes3);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Reportes de paquete por cliente");
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTitulo.setText("Reporte de paquetes por cliente:");
+
+        lblPendientes.setText("Paquetes pendientes:");
+
+        lblEnviados.setText("Paquetes Enviados:");
+
+        lblRecibidos.setText("Paquetes Recibidos:");
+
+        lstPaquetesPendientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lstPaquetesPendientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(lstPaquetesPendientes);
+
+        lstPaquetesRecibidos.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lstPaquetesRecibidos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(lstPaquetesRecibidos);
+
+        lstPaquetesEnviados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lstPaquetesEnviados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(lstPaquetesEnviados);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblPendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRecibidos)
+                    .addComponent(lblEnviados)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane3)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
+                .addGap(20, 20, 20)
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblPendientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(lblEnviados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblRecibidos)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //Metodo para que cuando se seleccione uno de la lista se pueda ver el reporte
-    private void ListaPaquetesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListaPaquetesMouseClicked
-        
-        int fila = ListaPaquetes.getSelectedRow(); //Saca la fila seleccionada
-
-        if(fila != -1){ //Verifico que la fila exista
-            String nombre = ListaPaquetes.getValueAt(fila, 0).toString();
-            Cliente cliente = Utils.encontrarCliente(sistema.getClientes(), nombre);
-            
-            if(cliente != null){ //Si el cliente existe abro la ventana de reporte
-                VentanaReporteCliente2 nueva = new VentanaReporteCliente2(sistema, cliente);
-                nueva.setVisible(true);
-                dispose();
-            }
-        }
-    }//GEN-LAST:event_ListaPaquetesMouseClicked
-
     //Metodo para que aparezcan los paquetes en la lista
-    public void cargarPaquetesCliente(){
+    public void cargarPaquetesPendientes(){
         
         DefaultTableModel modelo = new DefaultTableModel(); //Defino una nueva tabla
-        modelo.addColumn("Estado"); //Le pongo el nombre a cada columna
         modelo.addColumn("Identificador");
         modelo.addColumn("Fecha de Ingreso");       
         modelo.addColumn("Destinatario");
@@ -131,26 +206,80 @@ public class VentanaReporteCliente2 extends javax.swing.JFrame {
         modelo.addColumn("Peso");
         modelo.addColumn("Precio");
         
-        //Copio de la lista para no modificar el orden de la original
-        ArrayList<Paquete> ordenada = this.getSistema().getPaquetesPorCliente(this.nombreActual);
+        ArrayList<Paquete> paquetes = this.getSistema().getPaquetesPorClienteYEstado(this.nombreActual, "PENDIENTE");
         
-        //Ordenar alfabeticamente por estado
-        ordenada.sort((c1, c2) -> c1.getEstado().compareToIgnoreCase(c2.getEstado()));
-        
-        //Para cada cliente lo agrego a la tabla
-        for(int i = 0; i < ordenada.size(); i++){
-            Paquete p = ordenada.get(i);
-            //if(p.getCliente(.getNombre() == nombreActual))
-            modelo.addRow(new Object[]{p.getEstado(), p.getId(), p.getFechaIngreso(), p.getDestinatario(), p.getDireccion(),
+        //Para cada paquete lo agrego a la tabla
+        for(int i = 0; i < paquetes.size(); i++){
+            Paquete p = paquetes.get(i);
+            modelo.addRow(new Object[]{p.getId(), p.getFechaIngreso(), p.getDestinatario(), p.getDireccion(),
                                        p.getDestino(), p.getPeso() + " Grs.", "$" + p.getPrecio()});
         }
         
-        ListaPaquetes.setModel(modelo); //Pone los clientes en la tabla
+        lstPaquetesPendientes.setModel(modelo); //Pone los clientes en la tabla
+    }
+
+    //Metodo para que aparezcan los paquetes en la lista
+    public void cargarPaquetesEnviados(){
+        
+        DefaultTableModel modelo = new DefaultTableModel(); //Defino una nueva tabla
+        modelo.addColumn("Identificador");//Le pongo el nombre a cada columna
+        modelo.addColumn("Fecha de Ingreso");       
+        modelo.addColumn("Destinatario");
+        modelo.addColumn("Direccion");
+        modelo.addColumn("Departamento");
+        modelo.addColumn("Peso");
+        modelo.addColumn("Precio");
+        
+        ArrayList<Paquete> paquetes = this.getSistema().getPaquetesPorClienteYEstado(this.nombreActual, "ENVIADO");
+        
+        //Para cada paquete lo agrego a la tabla
+        for(int i = 0; i < paquetes.size(); i++){
+            Paquete p = paquetes.get(i);
+            modelo.addRow(new Object[]{p.getId(), p.getFechaIngreso(), p.getDestinatario(), p.getDireccion(),
+                                       p.getDestino(), p.getPeso() + " Grs.", "$" + p.getPrecio()});
+        }
+        
+        lstPaquetesEnviados.setModel(modelo); //Pone los clientes en la tabla
+    }
+
+    //Metodo para que aparezcan los paquetes en la lista
+    public void cargarPaquetesRecibidos(){
+        
+        DefaultTableModel modelo = new DefaultTableModel(); //Defino una nueva tabla
+        modelo.addColumn("Identificador");//Le pongo el nombre a cada columna
+        modelo.addColumn("Fecha de Ingreso");       
+        modelo.addColumn("Destinatario");
+        modelo.addColumn("Direccion");
+        modelo.addColumn("Departamento");
+        modelo.addColumn("Peso");
+        modelo.addColumn("Precio");
+        
+        ArrayList<Paquete> paquetes = this.getSistema().getPaquetesPorClienteYEstado(this.nombreActual, "RECIBIDO");
+        
+        //Para cada paquete lo agrego a la tabla
+        for(int i = 0; i < paquetes.size(); i++){
+            Paquete p = paquetes.get(i);
+            modelo.addRow(new Object[]{p.getId(), p.getFechaIngreso(), p.getDestinatario(), p.getDireccion(),
+                                       p.getDestino(), p.getPeso() + " Grs.", "$" + p.getPrecio()});
+        }
+        
+        lstPaquetesRecibidos.setModel(modelo); //Pone los clientes en la tabla
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ListaPaquetes;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTable ListaPaquetes3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel lblEnviados;
+    private javax.swing.JLabel lblPendientes;
+    private javax.swing.JLabel lblRecibidos;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTable lstPaquetesEnviados;
+    private javax.swing.JTable lstPaquetesPendientes;
+    private javax.swing.JTable lstPaquetesRecibidos;
     // End of variables declaration//GEN-END:variables
 }

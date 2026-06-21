@@ -1,7 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+//Obligatorio 2 - Programación 2 - Primer Semestre 2026
+//(212712) Veronica Busiello - (354398) Lourdes Ayala
+
 package Interfaz;
 
 import Controladores.Sistema;
@@ -13,10 +12,6 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- *
- * @author windows
- */
 public class VentanaDetallesEnvio extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaDetallesEnvio.class.getName());
@@ -51,7 +46,7 @@ public class VentanaDetallesEnvio extends javax.swing.JFrame {
         this.setEnvio(envio);
         lblID.setText("" + this.getEnvio().getNumeroEnvio());
         lblNombreFuncionario.setText(this.getEnvio().getFuncionario().getNombre());
-        lblNumeroFuncionario.setText(this.getEnvio().getFuncionario().getNumero());
+        lblNumeroFuncionario.setText("" + this.getEnvio().getFuncionario().getNumero());
         lblZona.setText(this.getEnvio().getNombreZona());
         lblFecha.setText(this.getEnvio().getFechaEnvio().toString());
         cargarPaquetes();
@@ -90,11 +85,12 @@ public class VentanaDetallesEnvio extends javax.swing.JFrame {
         lblZonaTitulo = new javax.swing.JLabel();
         lblZona = new javax.swing.JLabel();
         lblPaquetesTitulo = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblAyuda = new javax.swing.JLabel();
         lblFechaTitulo = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Detalles de envío");
 
         lstPaquetes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lstPaquetes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -131,9 +127,9 @@ public class VentanaDetallesEnvio extends javax.swing.JFrame {
         lblPaquetesTitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblPaquetesTitulo.setText("Paquetes:");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Haga doble click para ver detalles del paquete");
+        lblAyuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblAyuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAyuda.setText("Haga doble click para ver detalles del paquete");
 
         lblFechaTitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblFechaTitulo.setText("Fecha:");
@@ -150,7 +146,7 @@ public class VentanaDetallesEnvio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(scrPaquetes, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(lblFechaTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -198,7 +194,7 @@ public class VentanaDetallesEnvio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrPaquetes, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(lblAyuda)
                 .addGap(20, 20, 20))
         );
 
@@ -216,7 +212,7 @@ public class VentanaDetallesEnvio extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblAyuda;
     private javax.swing.JLabel lblEnvioTitulo;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblFechaTitulo;

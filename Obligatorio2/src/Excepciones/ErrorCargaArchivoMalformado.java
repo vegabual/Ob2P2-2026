@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+//Obligatorio 2 - Programación 2 - Primer Semestre 2026
+//(212712) Veronica Busiello - (354398) Lourdes Ayala
+
 package Excepciones;
 
-/**
- *
- * @author windows
- */
 public class ErrorCargaArchivoMalformado extends IllegalArgumentException {
     
     public ErrorCargaArchivoMalformado(String mensaje){

@@ -45,6 +45,7 @@ public class VentanaIngresarCliente extends javax.swing.JFrame {
         TextoNombre = new javax.swing.JTextField();
         TextoCelular = new javax.swing.JTextField();
         TextoCorreo = new javax.swing.JTextField();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -79,6 +80,10 @@ public class VentanaIngresarCliente extends javax.swing.JFrame {
 
         TextoCorreo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Nuevo Cliente");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,13 +105,16 @@ public class VentanaIngresarCliente extends javax.swing.JFrame {
                             .addComponent(TextoCorreo)
                             .addComponent(TextoCelular)
                             .addComponent(TextoNombre)))
-                    .addComponent(lbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE))
+                    .addComponent(lbl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -171,5 +179,6 @@ public class VentanaIngresarCliente extends javax.swing.JFrame {
     private javax.swing.JTextField TextoCorreo;
     private javax.swing.JTextField TextoNombre;
     private javax.swing.JLabel lbl;
+    private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }

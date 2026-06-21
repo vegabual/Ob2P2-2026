@@ -39,26 +39,26 @@ public class VentanaPaquete extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_1 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         NuevoPaquete = new javax.swing.JToggleButton();
-        lbl_2 = new javax.swing.JLabel();
+        lblPaquetes = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPaquetes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Paquetes");
 
-        lbl_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lbl_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_1.setText("Seleccione la acción que quiere realizar:");
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Seleccione la acción que quiere realizar:");
 
         NuevoPaquete.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NuevoPaquete.setText("Ingresar Paquete");
         NuevoPaquete.addActionListener(this::NuevoPaqueteActionPerformed);
 
-        lbl_2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        lbl_2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lbl_2.setText("Paquetes ingresados en el sistema:");
+        lblPaquetes.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        lblPaquetes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblPaquetes.setText("Paquetes ingresados en el sistema:");
 
         tblPaquetes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblPaquetes.setModel(new javax.swing.table.DefaultTableModel(
@@ -83,8 +83,8 @@ public class VentanaPaquete extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
-                    .addComponent(lbl_1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
-                    .addComponent(lbl_2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)
+                    .addComponent(lblPaquetes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -95,11 +95,11 @@ public class VentanaPaquete extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(lbl_1)
+                .addComponent(lblTitulo)
                 .addGap(18, 18, 18)
                 .addComponent(NuevoPaquete)
                 .addGap(18, 18, 18)
-                .addComponent(lbl_2)
+                .addComponent(lblPaquetes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
@@ -128,8 +128,8 @@ public class VentanaPaquete extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton NuevoPaquete;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_1;
-    private javax.swing.JLabel lbl_2;
+    private javax.swing.JLabel lblPaquetes;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tblPaquetes;
     // End of variables declaration//GEN-END:variables
 }

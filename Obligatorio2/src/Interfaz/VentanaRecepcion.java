@@ -69,22 +69,23 @@ public class VentanaRecepcion extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         lstEnvios = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblEnvios = new javax.swing.JLabel();
+        lblAyuda = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Recepción de envíos");
 
         lstEnvios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lstEnvios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstEnvios.addListSelectionListener(this::lstEnviosValueChanged);
         jScrollPane1.setViewportView(lstEnvios);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Envíos:");
+        lblEnvios.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblEnvios.setText("Envíos:");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Haga click en un envio para ver mas detalles o editar cuando sea posible");
+        lblAyuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblAyuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAyuda.setText("Haga click en un envio para ver mas detalles o editar cuando sea posible");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,20 +94,20 @@ public class VentanaRecepcion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEnvios, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE))
+                    .addComponent(lblAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(lblEnvios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addComponent(lblAyuda)
                 .addGap(20, 20, 20))
         );
 
@@ -124,9 +125,9 @@ public class VentanaRecepcion extends javax.swing.JFrame {
     }//GEN-LAST:event_lstEnviosValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAyuda;
+    private javax.swing.JLabel lblEnvios;
     private javax.swing.JList<Envio> lstEnvios;
     // End of variables declaration//GEN-END:variables
 }

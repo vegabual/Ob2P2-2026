@@ -1,7 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+//Obligatorio 2 - Programación 2 - Primer Semestre 2026
+//(212712) Veronica Busiello - (354398) Lourdes Ayala
+
 package Interfaz;
 
 import Controladores.Sistema;
@@ -14,10 +13,6 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 
-/**
- *
- * @author windows
- */
 public class VentanaRecibirEnvio extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaRecibirEnvio.class.getName());
@@ -52,7 +47,7 @@ public class VentanaRecibirEnvio extends javax.swing.JFrame {
         this.setEnvio(envio);
         lblID.setText("" + this.getEnvio().getNumeroEnvio());
         lblNombreFuncionario.setText(this.getEnvio().getFuncionario().getNombre());
-        lblNumeroFuncionario.setText(this.getEnvio().getFuncionario().getNumero());
+        lblNumeroFuncionario.setText("" + this.getEnvio().getFuncionario().getNumero());
         lblZona.setText(this.getEnvio().getNombreZona());
         lblFecha.setText(this.getEnvio().getFechaEnvio().toString());
         cargarPaquetes();
@@ -85,23 +80,24 @@ public class VentanaRecibirEnvio extends javax.swing.JFrame {
         lblNombreFuncionarioTitulo = new javax.swing.JLabel();
         lblNumeroFuncionarioTitulo = new javax.swing.JLabel();
         lblZonaTitulo = new javax.swing.JLabel();
-        lblPaquetesTitulo = new javax.swing.JLabel();
+        lblPaquetesNoEntregados = new javax.swing.JLabel();
         lblZona = new javax.swing.JLabel();
         lblNumeroFuncionario = new javax.swing.JLabel();
         lblNombreFuncionario = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
-        lblPaquetesTitulo1 = new javax.swing.JLabel();
+        lblPaquetesEntregados = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstNoEntregados = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstEntregados = new javax.swing.JList<>();
         btnAgregar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblAyuda = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblFechaATitulo = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -118,9 +114,9 @@ public class VentanaRecibirEnvio extends javax.swing.JFrame {
         lblZonaTitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblZonaTitulo.setText("Zona:");
 
-        lblPaquetesTitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblPaquetesTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPaquetesTitulo.setText("Paquetes no entregados");
+        lblPaquetesNoEntregados.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPaquetesNoEntregados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPaquetesNoEntregados.setText("Paquetes no entregados");
 
         lblZona.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblZona.setText("SUR");
@@ -134,9 +130,9 @@ public class VentanaRecibirEnvio extends javax.swing.JFrame {
         lblID.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblID.setText("0");
 
-        lblPaquetesTitulo1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblPaquetesTitulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPaquetesTitulo1.setText("Paquetes entregados");
+        lblPaquetesEntregados.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblPaquetesEntregados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPaquetesEntregados.setText("Paquetes entregados");
 
         lstNoEntregados.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lstNoEntregados.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -168,9 +164,9 @@ public class VentanaRecibirEnvio extends javax.swing.JFrame {
         btnRemover.setEnabled(false);
         btnRemover.addActionListener(this::btnRemoverActionPerformed);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Haga doble click para ver detalles del paquete");
+        lblAyuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblAyuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAyuda.setText("Haga doble click para ver detalles del paquete");
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(this::btnGuardarActionPerformed);
@@ -184,6 +180,10 @@ public class VentanaRecibirEnvio extends javax.swing.JFrame {
         lblFecha.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         lblFecha.setText("11/11/11");
 
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Recibir Envío");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -191,11 +191,8 @@ public class VentanaRecibirEnvio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelar))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(lblFechaATitulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -214,23 +211,28 @@ public class VentanaRecibirEnvio extends javax.swing.JFrame {
                             .addComponent(lblID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblPaquetesTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                            .addComponent(lblPaquetesNoEntregados, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblPaquetesTitulo1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPaquetesEntregados, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCancelar)))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEnvioTitulo)
                     .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -251,9 +253,9 @@ public class VentanaRecibirEnvio extends javax.swing.JFrame {
                     .addComponent(lblFechaATitulo)
                     .addComponent(lblFecha))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPaquetesTitulo)
-                    .addComponent(lblPaquetesTitulo1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPaquetesEntregados, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblPaquetesNoEntregados))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(37, 37, 37)
@@ -267,7 +269,7 @@ public class VentanaRecibirEnvio extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
+                .addComponent(lblAyuda)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
@@ -412,9 +414,9 @@ public class VentanaRecibirEnvio extends javax.swing.JFrame {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnRemover;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblAyuda;
     private javax.swing.JLabel lblEnvioTitulo;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblFechaATitulo;
@@ -423,8 +425,9 @@ public class VentanaRecibirEnvio extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombreFuncionarioTitulo;
     private javax.swing.JLabel lblNumeroFuncionario;
     private javax.swing.JLabel lblNumeroFuncionarioTitulo;
-    private javax.swing.JLabel lblPaquetesTitulo;
-    private javax.swing.JLabel lblPaquetesTitulo1;
+    private javax.swing.JLabel lblPaquetesEntregados;
+    private javax.swing.JLabel lblPaquetesNoEntregados;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblZona;
     private javax.swing.JLabel lblZonaTitulo;
     private javax.swing.JList<Paquete> lstEntregados;

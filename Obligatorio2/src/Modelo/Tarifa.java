@@ -5,10 +5,10 @@ package Modelo;
 
 public class Tarifa {
     private String nombre;
-    private double precioCat1;
-    private double precioCat2;
-    private double precioCat3;
-    private double precioCat4;
+    private int precioCat1;
+    private int precioCat2;
+    private int precioCat3;
+    private int precioCat4;
     private String[] departamentos;
     
     //<editor-fold desc="Getters and setters">
@@ -16,19 +16,19 @@ public class Tarifa {
         return nombre;
     }
 
-    public double getPrecioCat1() {
+    public int getPrecioCat1() {
         return precioCat1;
     }
 
-    public double getPrecioCat2() {
+    public int getPrecioCat2() {
         return precioCat2;
     }
 
-    public double getPrecioCat3() {
+    public int getPrecioCat3() {
         return precioCat3;
     }
 
-    public double getPrecioCat4() {
+    public int getPrecioCat4() {
         return precioCat4;
     }
 
@@ -40,19 +40,19 @@ public class Tarifa {
         this.nombre = nombre;
     }
 
-    public void setPrecioCat1(double precioCat1) {
+    public void setPrecioCat1(int precioCat1) {
         this.precioCat1 = precioCat1;
     }
 
-    public void setPrecioCat2(double precioCat2) {
+    public void setPrecioCat2(int precioCat2) {
         this.precioCat2 = precioCat2;
     }
 
-    public void setPrecioCat3(double precioCat3) {
+    public void setPrecioCat3(int precioCat3) {
         this.precioCat3 = precioCat3;
     }
 
-    public void setPrecioCat4(double precioCat4) {
+    public void setPrecioCat4(int precioCat4) {
         this.precioCat4 = precioCat4;
     }
     
@@ -62,7 +62,7 @@ public class Tarifa {
 
     //</editor-fold>
     
-    public Tarifa(String nombre, double precioCat1,double precioCat2, double precioCat3,double precioCat4, String[] departamentos) {
+    public Tarifa(String nombre, int precioCat1, int precioCat2, int precioCat3, int precioCat4, String[] departamentos) {
         this.setNombre(nombre);
         this.setPrecioCat1(precioCat1);
         this.setPrecioCat2(precioCat2);

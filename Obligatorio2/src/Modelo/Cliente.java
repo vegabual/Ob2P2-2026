@@ -3,7 +3,7 @@
 
 package Modelo;
 
-public class Cliente {
+public class Cliente implements Comparable<Cliente>{
     
     private String nombre; //DEBE SER UNICO -- VERIFICACION
     private String celular; //ESTE NO NECESITA VERIFICACION
@@ -45,6 +45,11 @@ public class Cliente {
     @Override
     public String toString(){
         return (this.getNombre() + "--" + this.getCelular() + "--" + this.getCorreo());
+    }
+
+    @Override
+    public int compareTo(Cliente c) {
+        return this.getNombre().compareTo(c.getNombre());
     }
        
 }//Class

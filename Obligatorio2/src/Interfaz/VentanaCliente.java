@@ -26,7 +26,6 @@ public class VentanaCliente extends javax.swing.JFrame {
     public VentanaCliente(Sistema unSistema) {
         initComponents();
         setLocationRelativeTo(null); //Para que la ventana aparezca en el medio de la pantalla
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //Para que no se cierre todo el programa y solo esta ventana
         
         this.sistema = unSistema;
         cargarClientes();
@@ -41,7 +40,7 @@ public class VentanaCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_1 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         NuevoCliente = new javax.swing.JToggleButton();
         lbl_2 = new javax.swing.JLabel();
         lbl_3 = new javax.swing.JLabel();
@@ -49,10 +48,11 @@ public class VentanaCliente extends javax.swing.JFrame {
         ListaClientes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Clientes");
 
-        lbl_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lbl_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_1.setText("Seleccione la acción que quiere realizar:");
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Seleccione la acción que quiere realizar:");
 
         NuevoCliente.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NuevoCliente.setText("Ingresar Cliente");
@@ -97,7 +97,7 @@ public class VentanaCliente extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_2, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(lbl_3, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
@@ -107,7 +107,7 @@ public class VentanaCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(lbl_1)
+                .addComponent(lblTitulo)
                 .addGap(18, 18, 18)
                 .addComponent(NuevoCliente)
                 .addGap(18, 18, 18)
@@ -157,7 +157,7 @@ public class VentanaCliente extends javax.swing.JFrame {
         ArrayList<Cliente> ordenada = new ArrayList<>(sistema.getClientes());
 
         //Ordenar alfabeticamente por nombre
-        ordenada.sort((c1, c2) -> c1.getNombre().compareToIgnoreCase(c2.getNombre()));
+        Collections.sort(ordenada);
         
         //Para cada cliente lo agrego a la tabla
         for(int i = 0; i < ordenada.size(); i++){
@@ -172,7 +172,7 @@ public class VentanaCliente extends javax.swing.JFrame {
     private javax.swing.JTable ListaClientes;
     private javax.swing.JToggleButton NuevoCliente;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_1;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lbl_2;
     private javax.swing.JLabel lbl_3;
     // End of variables declaration//GEN-END:variables

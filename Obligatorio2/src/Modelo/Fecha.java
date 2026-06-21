@@ -17,7 +17,7 @@ public class Fecha {
         return dia;
     }
 
-    public void setDia(int dia) {
+    private void setDia(int dia) {
         this.dia = dia;
     }
 
@@ -25,7 +25,7 @@ public class Fecha {
         return mes;
     }
 
-    public void setMes(int mes) {
+    private void setMes(int mes) {
         this.mes = mes;
     }
 
@@ -33,7 +33,12 @@ public class Fecha {
         return anio;
     }
 
-    public void setAnio(int anio) {
+    private void setAnio(int anio) {
+        if(anio < 50){
+            anio += 2000; //Asumo que se ingresaron los ultimos 2 digitos de un año del 2000
+        } else if(anio < 100){
+            anio += 1900; // Asumo que se ingresaron los ultimos 2 digitos de un año del 1900
+        }
         this.anio = anio;
     }
     //</editor-fold>
@@ -44,11 +49,6 @@ public class Fecha {
         } else {
             this.setDia(dia);
             this.setMes(mes);
-            if(anio < 50){
-                anio += 2000; //Asumo que se ingresaron los ultimos 2 digitos de un año del 2000
-            } else if(anio < 100){
-                anio += 1900; // Asumo que se ingresaron los ultimos 2 digitos de un año del 1900
-            }
             this.setAnio(anio);
         }
     }
@@ -60,12 +60,17 @@ public class Fecha {
         return esValida;
     }
     
-    private boolean anioValido(int anio){
+    public boolean anioValido(int anio){
         boolean es2Cifras = anio > 0 && anio < 100;
         boolean es4CifrasValido = anio > 1000 && anio < 3000;
         return es2Cifras || es4CifrasValido;
     }
     
+    public static boolean anioValido(int anio, int maxAnio){
+        boolean es2Cifras = anio > 0 && anio < 100;
+        boolean es4CifrasValido = anio > 1000 && anio < maxAnio;
+        return es2Cifras || es4CifrasValido;
+    }
     /**
      * Intenta generar una fecha en base a 3 enteros, dia, mes y año. Si la  fecha no es valida, devuelve si es valida o no
      * @param dia Dia del mes la fecha

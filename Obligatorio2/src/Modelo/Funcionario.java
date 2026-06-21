@@ -3,12 +3,12 @@
 
 package Modelo;
 
-public class Funcionario {
+public class Funcionario implements Comparable<Funcionario> {
     
     private String nombre;
     private String celular;
-    private String numero;
-    private String anio;
+    private int numero;
+    private int anio;
     
     //getters
     public String getNombre(){
@@ -19,11 +19,11 @@ public class Funcionario {
         return celular;
     }
     
-    public String getNumero(){
+    public int getNumero(){
         return numero;
     }  
     
-    public String getAnio(){
+    public int getAnio(){
         return anio;
     }   
     
@@ -36,16 +36,21 @@ public class Funcionario {
         celular = unCelular;
     }
     
-    public void setNumero(String unNumero){
+    public void setNumero(int unNumero){
         numero = unNumero;
     }
     
-    public void setAnio(String unAnio){
+    public void setAnio(int unAnio){
+        if(unAnio < 27){
+            unAnio += 2000; //Asumo que se ingresaron los ultimos 2 digitos de un año del 2000
+        } else if(unAnio < 100){
+            unAnio += 1900; // Asumo que se ingresaron los ultimos 2 digitos de un año del 1900
+        }
         anio = unAnio;
     }
     
     //Constructor
-    public Funcionario(String unNombre, String unCelular, String unNumero, String unAnio){
+    public Funcionario(String unNombre, String unCelular, int unNumero, int unAnio){
         this.setNombre(unNombre);
         this.setCelular(unCelular);
         this.setNumero(unNumero);
@@ -55,6 +60,17 @@ public class Funcionario {
     @Override
     public String toString(){ 
         return (this.getNombre() + "--" + this.getCelular() + "--" + this.getNumero() + "--" + this.getAnio());
+    }
+
+    @Override
+    public int compareTo(Funcionario f) {
+        int resultado;
+        if(this.getAnio() == f.getAnio()){
+            resultado = this.getNombre().compareTo(f.getNombre());
+        } else{
+            resultado = f.getAnio() - this.getAnio();
+        }
+        return resultado;
     }
     
 }//Class

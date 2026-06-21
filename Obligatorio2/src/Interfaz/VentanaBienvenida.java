@@ -4,6 +4,8 @@
 package Interfaz;
 
 import Interfaz.VentanaPrincipal;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.Timer; //Para el timer
 
 public class VentanaBienvenida extends javax.swing.JFrame {
@@ -15,12 +17,14 @@ public class VentanaBienvenida extends javax.swing.JFrame {
         setLocationRelativeTo(null); //Para que la ventana aparezca en el medio de la pantalla
 
         //Poner un timer de 3 segundos para abrir la ventana que va despues la de bienvenida
-        Timer timer = new Timer(3000, e ->{ 
-            new VentanaPrincipal().setVisible(true); //Abre la ventana principal despues de 3 segundos
-            dispose(); //Cierra la de bienvenida
+        Timer t = new Timer(3000, new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                new VentanaPrincipal().setVisible(true);//Abre la ventana principal despues de 3 segundos
+                dispose();//Cierra la de bienvenida
+            }
         });
-        timer.setRepeats(false); //Para que no quede en un loop la ventana que se abre
-        timer.start(); //Inicia el timer
+        t.setRepeats(false);//Para que no quede en un loop la ventana que se abre
+        t.start(); //Inicia el timer
     }
 
     /**

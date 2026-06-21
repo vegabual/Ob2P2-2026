@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import Controladores.Sistema;
 import Modelo.Cliente;
 import Modelo.Paquete;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class VentanaReporteCliente extends javax.swing.JFrame {
@@ -44,25 +45,26 @@ public class VentanaReporteCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         lbl_1 = new javax.swing.JLabel();
-        lbl_2 = new javax.swing.JLabel();
-        lbl_3 = new javax.swing.JLabel();
+        lblClientes = new javax.swing.JLabel();
+        lblAyuda = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaClientes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lbl_1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_1.setText("Reportes por Cliente");
 
-        lbl_2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_2.setText("Clientes ingresados en el sistema:");
+        lblClientes.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblClientes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblClientes.setText("Clientes ingresados en el sistema:");
 
-        lbl_3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_3.setText("Seleccione un cliente de la lista para ver su reporte.");
+        lblAyuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblAyuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAyuda.setText("Seleccione un cliente de la lista para ver su reporte.");
 
+        ListaClientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ListaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -86,31 +88,26 @@ public class VentanaReporteCliente extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbl_3, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                    .addComponent(lblClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(20, 20, 20)
                 .addComponent(lbl_1)
                 .addGap(18, 18, 18)
-                .addComponent(lbl_2)
-                .addGap(18, 18, 18)
+                .addComponent(lblClientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_3)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(lblAyuda)
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -126,9 +123,12 @@ public class VentanaReporteCliente extends javax.swing.JFrame {
             Cliente cliente = Utils.encontrarCliente(sistema.getClientes(), nombre);
             
             if(cliente != null){ //Si el cliente existe abro la ventana de reporte
-                VentanaReporteCliente2 nueva = new VentanaReporteCliente2(sistema, cliente);
-                nueva.setVisible(true);
-                dispose();
+                if(this.getSistema().getPaquetesPorCliente(cliente.getNombre()).size() > 0){
+                    VentanaReporteCliente2 nueva = new VentanaReporteCliente2(sistema, cliente);
+                    nueva.setVisible(true);
+                } else{
+                    JOptionPane.showMessageDialog(this, "El cliente seleccionado no tiene paquetes que mostrar.");
+                }
             }
         }
     }//GEN-LAST:event_ListaClientesMouseClicked
@@ -144,9 +144,9 @@ public class VentanaReporteCliente extends javax.swing.JFrame {
         
         //Copio de la lista para no modificar el orden de la original
         ArrayList<Cliente> ordenada = new ArrayList<>(sistema.getClientes());
-
+        
         //Ordenar alfabeticamente por nombre
-        ordenada.sort((c1, c2) -> c1.getNombre().compareToIgnoreCase(c2.getNombre()));
+        Collections.sort(ordenada);
         
         //Para cada cliente lo agrego a la tabla
         for(int i = 0; i < ordenada.size(); i++){
@@ -162,8 +162,8 @@ public class VentanaReporteCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ListaClientes;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAyuda;
+    private javax.swing.JLabel lblClientes;
     private javax.swing.JLabel lbl_1;
-    private javax.swing.JLabel lbl_2;
-    private javax.swing.JLabel lbl_3;
     // End of variables declaration//GEN-END:variables
 }

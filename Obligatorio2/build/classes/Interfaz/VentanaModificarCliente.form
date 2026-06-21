@@ -27,14 +27,16 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="lblTitulo" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="Guardar" min="-2" pref="111" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="Cancelar" min="-2" pref="111" max="-2" attributes="0"/>
                   </Group>
                   <Component id="lbl" alignment="0" max="32767" attributes="0"/>
-                  <Component id="lbl1" alignment="1" max="32767" attributes="0"/>
+                  <Component id="lblAyuda" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="Nombre" alignment="0" max="32767" attributes="0"/>
                           <Component id="Celular" alignment="0" max="32767" attributes="0"/>
@@ -77,6 +79,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="lbl" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -100,7 +104,7 @@
                   <Component id="correoA" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="32767" attributes="0"/>
-              <Component id="lbl1" min="-2" max="-2" attributes="0"/>
+              <Component id="lblAyuda" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Guardar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -239,13 +243,22 @@
         <Property name="text" type="java.lang.String" value="correo@dominio.com"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbl1">
+    <Component class="javax.swing.JLabel" name="lblAyuda">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Los campos que queden vacios no se modificaran."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTitulo">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="1"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Modificar  Cliente"/>
       </Properties>
     </Component>
   </SubComponents>

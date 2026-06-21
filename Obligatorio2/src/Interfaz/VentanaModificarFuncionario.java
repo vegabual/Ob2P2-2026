@@ -6,7 +6,13 @@ package Interfaz;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Controladores.Sistema;
+import Modelo.Fecha;
 import Modelo.Funcionario;
+import Utils.Utils;
+import static Utils.Utils.stringEsParseableAInt;
+import java.awt.event.KeyEvent;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import javax.swing.JTextField;
 
 public class VentanaModificarFuncionario extends javax.swing.JFrame {
     
@@ -31,8 +37,8 @@ public class VentanaModificarFuncionario extends javax.swing.JFrame {
         
         nombreA.setText(unFuncionario.getNombre());
         celularA.setText(unFuncionario.getCelular());
-        numeroA.setText(unFuncionario.getNumero());
-        AnioA.setText(unFuncionario.getAnio());
+        numeroA.setText("" + unFuncionario.getNumero());
+        AnioA.setText("" + unFuncionario.getAnio());
     }
 
     /**
@@ -62,8 +68,9 @@ public class VentanaModificarFuncionario extends javax.swing.JFrame {
         Anio = new javax.swing.JLabel();
         AnioN = new javax.swing.JLabel();
         TextoAnio = new javax.swing.JTextField();
-        lbl1 = new javax.swing.JLabel();
+        lblAyuda = new javax.swing.JLabel();
         AnioA = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -97,6 +104,11 @@ public class VentanaModificarFuncionario extends javax.swing.JFrame {
         TextoCelular.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
         TextoNumero.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        TextoNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextoNumeroKeyReleased(evt);
+            }
+        });
 
         NombreN.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         NombreN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -128,26 +140,36 @@ public class VentanaModificarFuncionario extends javax.swing.JFrame {
         AnioN.setText("Año Nuevo:");
 
         TextoAnio.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        TextoAnio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TextoAnioKeyReleased(evt);
+            }
+        });
 
-        lbl1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl1.setText("Los campos que queden vacios no se modificaran.");
+        lblAyuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblAyuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAyuda.setText("Los campos que queden vacios no se modificaran.");
 
         AnioA.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         AnioA.setText("2026");
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Modificar Funcionario");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Celular)
@@ -175,14 +197,16 @@ public class VentanaModificarFuncionario extends javax.swing.JFrame {
                             .addComponent(TextoCelular, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                             .addComponent(TextoAnio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
                             .addComponent(TextoNombre)))
-                    .addComponent(lbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblAyuda, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -209,7 +233,7 @@ public class VentanaModificarFuncionario extends javax.swing.JFrame {
                     .addComponent(AnioN)
                     .addComponent(AnioA))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl1)
+                .addComponent(lblAyuda)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Guardar)
@@ -233,19 +257,74 @@ public class VentanaModificarFuncionario extends javax.swing.JFrame {
         String celular = TextoCelular.getText().trim();
         String numero = TextoNumero.getText().trim();
         String anio = TextoAnio.getText().trim();
-
-        //Le paso el nombre actual para buscar en la lista el objeto funcionario a modificar y los datos
-        if(sistema.ModificarFuncionario(nombreActual, nombre, celular, numero, anio)){
-            JOptionPane.showMessageDialog(this, "Funcionario modificado correctamente.");
-            VentanaFuncionario nueva = new VentanaFuncionario(sistema);
-            nueva.setVisible(true);
-            this.dispose();
+        
+        boolean validarNumero = Utils.stringEsParseableAInt(numero);
+        if(numero.isEmpty()){
+           validarNumero = true; 
         }
-        else{
-            JOptionPane.showMessageDialog(this, "Ya existe un cliente o funcionario con ese nombre, ingrese otro.");
-        }           
+        
+        boolean validarAnio = Utils.stringEsParseableAInt(numero);
+        if(anio.isEmpty()){
+            validarAnio = true;
+        } else {
+            int anioInt = Integer.parseInt(TextoAnio.getText().trim());
+            validarAnio = Fecha.anioValido(anioInt, 2027);
+        }
+        
+        if(validarNumero && validarAnio){
+            //Le paso el nombre actual para buscar en la lista el objeto funcionario a modificar y los datos
+            if(sistema.ModificarFuncionario(nombreActual, nombre, celular, numero, anio)){
+                JOptionPane.showMessageDialog(this, "Funcionario modificado correctamente.");
+                VentanaFuncionario nueva = new VentanaFuncionario(sistema);
+                nueva.setVisible(true);
+                this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Ya existe un cliente o funcionario con ese nombre, ingrese otro.", "Error al modificar funcionario", ERROR_MESSAGE);
+            }       
+        } else if(!validarNumero){
+            JOptionPane.showMessageDialog(this, "El numero de funcionario debe ser un valor numérico.", "Error al guardar funcionario", ERROR_MESSAGE);
+        } else{
+            JOptionPane.showMessageDialog(this, "El año debe ser un valor numérico entre el 1 al 2026 y con formato \"yy\" o \"yyyy\"", "Error al guardar funcionario", ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_ModificarFuncionario
 
+    private void TextoNumeroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextoNumeroKeyReleased
+        String numero = TextoNumero.getText().trim();
+        if(numero.length() > 0 && evt.getKeyCode() != KeyEvent.VK_ENTER){
+            boolean esValido = stringEsParseableAInt(numero); 
+            if(!esValido){ //Si el numero de funcionario  no es un numero, o no estra entre 1 y 2026, mostrar mensaje de error y borrar el dato
+                JOptionPane.showMessageDialog(this, "Solo se pueden ingresar números.", "Input inválido", ERROR_MESSAGE);
+                while(!esValido && numero.length() > 0){
+                    borrarUltimoChar(TextoNumero);
+                    numero = TextoNumero.getText().trim();
+                    esValido = stringEsParseableAInt(numero);
+                }
+            }
+        }
+    }//GEN-LAST:event_TextoNumeroKeyReleased
+
+    private void TextoAnioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextoAnioKeyReleased
+        String anio = TextoNumero.getText().trim();
+        if(anio.length() > 0 && evt.getKeyCode() != KeyEvent.VK_ENTER){
+            boolean esValido = stringEsParseableAInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 2027; //Solo permitimos año de ingreso hasta el año actual
+            if(!esValido){ //Si el año no es un numero, o no estra entre 1 y 2026, mostrar mensaje de error y borrar el dato
+                JOptionPane.showMessageDialog(this, "Solo se pueden ingresar numeros del 1 al 2026.", "Input inválido", ERROR_MESSAGE);
+                while(!esValido && anio.length() > 0){
+                    borrarUltimoChar(TextoNumero);
+                    anio = TextoNumero.getText().trim();
+                    esValido = stringEsParseableAInt(anio) && Integer.parseInt(anio) > 0 && Integer.parseInt(anio) < 2027;
+                }
+            }
+        }
+    }//GEN-LAST:event_TextoAnioKeyReleased
+
+    private void borrarUltimoChar(JTextField campo){
+        String texto = campo.getText();
+        if(texto.length() > 0){
+            campo.setText(texto.substring(0, texto.length() - 1));
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Anio;
@@ -265,7 +344,8 @@ public class VentanaModificarFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField TextoNumero;
     private javax.swing.JLabel celularA;
     private javax.swing.JLabel lbl;
-    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lblAyuda;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel nombreA;
     private javax.swing.JLabel numeroA;
     // End of variables declaration//GEN-END:variables

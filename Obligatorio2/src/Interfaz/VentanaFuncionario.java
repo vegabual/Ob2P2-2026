@@ -44,11 +44,12 @@ public class VentanaFuncionario extends javax.swing.JFrame {
         lbl_1 = new javax.swing.JLabel();
         NuevoCliente = new javax.swing.JToggleButton();
         lbl_2 = new javax.swing.JLabel();
-        lbl_3 = new javax.swing.JLabel();
+        lblAyuda = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaFuncionarios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Funcionarios");
 
         lbl_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -62,9 +63,9 @@ public class VentanaFuncionario extends javax.swing.JFrame {
         lbl_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_2.setText("Funcionarios ingresados en el sistema:");
 
-        lbl_3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_3.setText("Para modificar los datos de un funcionario debe seleccionar uno de la lista.");
+        lblAyuda.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblAyuda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAyuda.setText("Para modificar los datos de un funcionario debe seleccionar uno de la lista.");
 
         ListaFuncionarios.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ListaFuncionarios.setModel(new javax.swing.table.DefaultTableModel(
@@ -90,17 +91,18 @@ public class VentanaFuncionario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(lbl_3, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-                    .addComponent(lbl_2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(NuevoCliente)
-                .addGap(149, 149, 149))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(lblAyuda, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                            .addComponent(lbl_2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(NuevoCliente)
+                        .addGap(149, 149, 149))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +116,7 @@ public class VentanaFuncionario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_3)
+                .addComponent(lblAyuda)
                 .addGap(20, 20, 20))
         );
 
@@ -157,7 +159,7 @@ public class VentanaFuncionario extends javax.swing.JFrame {
         ArrayList<Funcionario> ordenada = new ArrayList<>(sistema.getFuncionarios());
 
         //Ordenar decrecientemente por año de ingreso
-        ordenada.sort((f1, f2) -> f2.getAnio().compareTo(f1.getAnio()));
+        Collections.sort(ordenada);
         
         //Para cada funcionario lo agrego a la tabla
         for(int i = 0; i < ordenada.size(); i++){
@@ -173,8 +175,8 @@ public class VentanaFuncionario extends javax.swing.JFrame {
     private javax.swing.JTable ListaFuncionarios;
     private javax.swing.JToggleButton NuevoCliente;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblAyuda;
     private javax.swing.JLabel lbl_1;
     private javax.swing.JLabel lbl_2;
-    private javax.swing.JLabel lbl_3;
     // End of variables declaration//GEN-END:variables
 }

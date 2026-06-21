@@ -103,10 +103,12 @@ public class Sistema {
      */
     public void sistemaNuevo(){
         this.getManagerDatos().inicializar(false); //Debe sobre escribir, no extender, por lo tanto ext debe ser false
+        this.getManagerDatos().generarLog("Inicio de sistema nuevo.");
     }
     
     public void sistemaGuardado() throws ErrorCargaArchivoMalformado{
         this.getManagerDatos().inicializar(true);
+        this.getManagerDatos().generarLog("Carga de sistema guardado.");
     }
     
     //Metodo para verificar que un nombre sea unico entre clientes y funcionarios
@@ -122,6 +124,15 @@ public class Sistema {
         return verifico;
     }
     
+    public ArrayList<String> getLogs(){
+        return this.getManagerDatos().getLogs();
+    }
+    
+    public void limpiarLogs(){
+        this.getManagerDatos().limpiarLogs();
+        this.getManagerDatos().generarLog("Limpieza de logs disparada por usuario.");
+    }
+    
     //<editor-fold desc="Cliente">
     //Metodo de guardar cliente 
     public boolean guardarCliente(String unNombre, String unCelular, String unCorreo){
@@ -133,6 +144,7 @@ public class Sistema {
            this.getManagerDatos().guardarNuevoClienteEnArchivo(cliente);
            this.getClientes().add(cliente);
            verifico = true;
+           this.getManagerDatos().generarLog("Ingreso de cliente " + unNombre + ".");
         }
         return verifico;
     }
@@ -147,6 +159,10 @@ public class Sistema {
         if(cliente != null && verificoNombre(unNombreNuevo)){ //Si el nombre no esta vacio verifico si lso datos estan o no vacios
             if(!unNombreNuevo.isEmpty()){
                 cliente.setNombre(unNombreNuevo);
+                this.getManagerDatos().generarLog("Modificacion de cliente " + unNombreActual + " a " + unNombreNuevo + ".");
+            }
+            else{
+                this.getManagerDatos().generarLog("Modificacion de cliente " + unNombreActual + ".");
             }
             if(!unCelular.isEmpty()){
                 cliente.setCelular(unCelular);
@@ -172,6 +188,21 @@ public class Sistema {
     
     //<editor-fold desc="Funcionario">
     
+    //Metodo de guardar funcionario 
+    public boolean guardarFuncionario(String unNombre, String unCelular, int unNumero, int unAnio){
+        
+        boolean verifico = false;
+        
+        if(verificoNombre(unNombre)){
+           Funcionario funcionario = new Funcionario(unNombre, unCelular, unNumero, unAnio);
+           this.getManagerDatos().guardarNuevoFuncionarioEnArchivo(funcionario);
+           this.getFuncionarios().add(funcionario);
+           verifico = true;
+           this.getManagerDatos().generarLog("Ingreso de funcionario " + unNombre + ".");
+        }
+        return verifico;
+    }
+    
     //Metodo de guardar funcionario modificado
     public boolean ModificarFuncionario(String unNombreActual, String unNombreNuevo, String unCelular, String unNumero, String unAnio){
         
@@ -182,15 +213,21 @@ public class Sistema {
         if(verificoNombre(unNombreNuevo) && funcionario != null){ //Si el nombre no esta vacio verifico si los datos estan o no vacios
             if(!unNombreNuevo.isEmpty()){
                 funcionario.setNombre(unNombreNuevo);
+                this.getManagerDatos().generarLog("Modificacion de funcionario " + unNombreActual + " a " + unNombreNuevo + ".");
+            }
+            else{
+                this.getManagerDatos().generarLog("Modificacion de funcionario " + unNombreActual + ".");
             }
             if(!unCelular.isEmpty()){
                 funcionario.setCelular(unCelular);
             }
             if(!unNumero.isEmpty()) {
-                funcionario.setNumero(unNumero);
+                int numFuncionario = Integer.parseInt(unNumero);
+                funcionario.setNumero(numFuncionario);
             }
             if(!unAnio.isEmpty()) {
-                funcionario.setAnio(unAnio);
+                int anioEntero = Integer.parseInt(unAnio);
+                funcionario.setAnio(anioEntero);
             }
             //Guardo los cambios segun los datos que pasan
             //Si estan vacios los Strings, guarda los datos que ya tenia
@@ -200,20 +237,6 @@ public class Sistema {
                 this.getManagerDatos().guardarModificacionEnvioEnArchivo();
             }
             verifico = true;
-        }
-        return verifico;
-    }
-    
-    //Metodo de guardar funcionario 
-    public boolean guardarFuncionario(String unNombre, String unCelular, String unNumero, String unAnio){
-        
-        boolean verifico = false;
-        
-        if(verificoNombre(unNombre)){
-           Funcionario funcionario = new Funcionario(unNombre, unCelular, unNumero, unAnio);
-           this.getManagerDatos().guardarNuevoFuncionarioEnArchivo(funcionario);
-           this.getFuncionarios().add(funcionario);
-           verifico = true;
         }
         return verifico;
     }
@@ -251,6 +274,35 @@ public class Sistema {
         }
         return nombreZona;
     }
+    
+    //Metodo que se usa para modificar las tarifas segun el porcentaje
+    public boolean modificarTarifas(String accion, double porcentaje){
+
+        boolean seGuardoOk = false;
+        double aux = 0; //Auxiliar para hacer las operaciones
+        
+        if(accion.equalsIgnoreCase("Aumentar")){ //Para aumento de tarifas
+            aux = 1 + (porcentaje/100); //Sumo 1 (seria el precio actual) mas el porcentaje calculado (lo que le aumento al precio)
+        }
+        else if(accion.equalsIgnoreCase("Disminuir")){ //Para disminuir tarifas
+            aux = 1 - (porcentaje/100); //Idem al aumento pero restando el porcentaje al precio original
+        }
+        
+        //Saco de la lista las tarifas
+        for(int i = 0; i < this.getTarifas().size(); i++){
+            Tarifa tarifa = this.getTarifas().get(i);
+            //Saco el precio actual, lo modifico y lo guardo
+            tarifa.setPrecioCat1((int) Math.round(tarifa.getPrecioCat1() * aux));
+            tarifa.setPrecioCat2((int)Math.round(tarifa.getPrecioCat2() * aux));
+            tarifa.setPrecioCat3((int)Math.round(tarifa.getPrecioCat3() * aux));
+            tarifa.setPrecioCat4((int)Math.round(tarifa.getPrecioCat4() * aux));
+            
+            seGuardoOk = true;
+        }
+        this.getManagerDatos().guardarTarifasModificadas(); //Llamo al metodo que las guarda en la lista de nuevo
+        this.getManagerDatos().generarLog("Modificacion de tarifas - " + accion + " " + porcentaje + "%." );
+        return seGuardoOk;
+    }
     //</editor-fold>
     
     //<editor-fold desc="Paquetes">
@@ -263,6 +315,7 @@ public class Sistema {
             this.getManagerDatos().guardarPaqueteEnArchivo(paquete);
             this.getPaquetes().add(paquete);
             agregado = true;
+            this.getManagerDatos().generarLog("Ingreso de paquete del cliente " + cliente.getNombre() + ".");
         }
         return agregado;
     }
@@ -299,6 +352,17 @@ public class Sistema {
         Collections.sort(filtrados);
         return filtrados;
     }
+    
+    public ArrayList<Paquete> getPaquetesPorClienteYEstado(String nombreCliente, String estado){
+        ArrayList<Paquete> filtrados = new ArrayList<Paquete>();
+        for(Paquete p: this.getPaquetes()){
+            if(p.getCliente().getNombre().equalsIgnoreCase(nombreCliente) && p.getEstado().equalsIgnoreCase(estado)){
+                filtrados.add(p);
+            }
+        }
+        Collections.sort(filtrados);
+        return filtrados;
+    }
     //</editor-fold>
     
     //<editor-fold desc="Envio">
@@ -310,6 +374,8 @@ public class Sistema {
         this.getEnvios().add(envio);
         this.getManagerDatos().guardarEnvioEnArchivo(envio);
         this.getManagerDatos().guardarModificacionPaqueteEnArchivo();
+        
+        this.getManagerDatos().generarLog("Ingreso de envio " + envio.getNumeroEnvio() + ".");
         return true;
     }
     
@@ -332,6 +398,8 @@ public class Sistema {
         
         this.getManagerDatos().guardarModificacionPaqueteEnArchivo();
         this.getManagerDatos().guardarModificacionEnvioEnArchivo();
+        
+        this.getManagerDatos().generarLog("Recepción del envío " + envio.getNumeroEnvio() + ".");
     }
     //</editor-fold>
 

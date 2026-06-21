@@ -4,13 +4,12 @@
 package obligatorio2;
 
 import Interfaz.VentanaBienvenida;
-//import java.awt.*; //VENTANAS EMERGENTES USAN ESTAS DOS
-//import java.awt.event.*;
+
 public class Obligatorio2 {
 
     public static void main(String[] args) {
         
-        //Inicio el programa en este main para configurar solo una vez que las ventnas se vean como windows
+        //Inicio el programa en este main para configurar solo una vez que las ventanas se vean como windows
         //Inicio de codigo de chatgpt --> Para que todas las ventanas se vean como windows
         //Tambien aparece en el main de las clases de ventanas cuando se crean (lo elimino)
         try{            
@@ -36,19 +35,3 @@ public class Obligatorio2 {
     }//Main
     
 }//Class
-
-/* EN CASO DE NECESITAR VENTANA EMERGENTE
-
-import Interfaz.DatosAlumno;
-
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher(){
-            @Override
-            public boolean dispatchKeyEvent(KeyEvent e){
-                if(e.getID() == KeyEvent.KEY_PRESSED && e.getKeyCode() == KeyEvent.VK_F1){ //Si se apreta F1 se abre la ventana de datos
-                    new NOMBREVENTANA().setVisible(true);
-                }
-                return false; //Deja que otros eventos se sigan procesando
-            }
-        });//Fin codigo de chatgpt  
-
-*/

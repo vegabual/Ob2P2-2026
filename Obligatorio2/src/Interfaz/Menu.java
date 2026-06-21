@@ -57,6 +57,7 @@ public class Menu extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de gestion de paquetería");
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_Menu.png"))); // NOI18N
         Fondo.setText("jLabel1");
@@ -179,7 +180,8 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_R_Cliente
 
     private void Transacciones(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Transacciones
-        //LLAMA LA VENTANA DE TRANSACCIONES
+        VentanaLogs nueva = new VentanaLogs(sistema);
+        nueva.setVisible(true);       
     }//GEN-LAST:event_Transacciones
 
     private void Envio(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Envio

@@ -47,6 +47,7 @@ public class VentanaModificarTarifas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Modificar = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -71,6 +72,10 @@ public class VentanaModificarTarifas extends javax.swing.JFrame {
         Cancelar.setText("Cancelar");
         Cancelar.addActionListener(this::Cancelar);
 
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("Modificar Tarifas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,7 +83,8 @@ public class VentanaModificarTarifas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Disminuir)
@@ -91,12 +97,14 @@ public class VentanaModificarTarifas extends javax.swing.JFrame {
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(32, 32, 32)
                                 .addComponent(Porcentaje, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(20, 20, 20))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -144,11 +152,11 @@ public class VentanaModificarTarifas extends javax.swing.JFrame {
                 if(verifico == JOptionPane.YES_OPTION){
                     //Aca se llama al metodo que hace los calculos y se le pasa una palabra y el porcentaje
                     if(Aumentar.isSelected()){
-                        sistema.getManagerDatos().modificarTarifas("Aumentar", porcentaje);
+                        sistema.modificarTarifas("Aumentar", porcentaje);
                         JOptionPane.showMessageDialog(this, "Tarifas aumentadas correctamente.");
                     } 
                     else if(Disminuir.isSelected()){
-                        sistema.getManagerDatos().modificarTarifas("Disminuir", porcentaje);
+                        sistema.modificarTarifas("Disminuir", porcentaje);
                         JOptionPane.showMessageDialog(this, "Tarifas reducidas correctamente.");
                     }
 
@@ -180,5 +188,6 @@ public class VentanaModificarTarifas extends javax.swing.JFrame {
     private javax.swing.JTextField Porcentaje;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }
