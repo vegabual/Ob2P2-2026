@@ -47,7 +47,7 @@ public class VentanaIngresarCliente extends javax.swing.JFrame {
         TextoCorreo = new javax.swing.JTextField();
         lblTitulo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
         Nombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N

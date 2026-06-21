@@ -101,7 +101,7 @@ public class VentanaReporteCliente2 extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(ListaPaquetes3);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Reportes de paquete por cliente");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

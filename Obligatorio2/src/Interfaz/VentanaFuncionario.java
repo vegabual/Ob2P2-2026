@@ -48,7 +48,7 @@ public class VentanaFuncionario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaFuncionarios = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Funcionarios");
 
         lbl_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

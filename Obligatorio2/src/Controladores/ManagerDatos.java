@@ -264,13 +264,16 @@ public class ManagerDatos {
     public Envio archivoAEnvio(String lineaArchivo) throws ErrorFechaNoValidaException {
         String[] items = lineaArchivo.split("--");
         Envio envio = null;
-        if(items.length == 6){
+        if(items.length == 6 || items.length == 5){
             int numeroEnvio = Integer.parseInt(items[0]);
             Funcionario funcionario = Utils.encontrarFuncionario(this.getFuncionarios(), items[1]);
             Fecha fecha = Fecha.parseFecha(items[2]);
             String zona = items[3];
             String estado = items[4];
-            ArrayList<Paquete> paquetes = listaIdAPaquetes(items[5]);
+            ArrayList<Paquete> paquetes = new ArrayList<Paquete>();
+            if(items.length == 6){
+                paquetes = listaIdAPaquetes(items[5]);
+            }
 
             envio = new Envio(numeroEnvio, funcionario, fecha, zona, estado, paquetes);
         }

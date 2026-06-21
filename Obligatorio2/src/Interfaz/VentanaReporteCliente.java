@@ -50,7 +50,7 @@ public class VentanaReporteCliente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaClientes = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lbl_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

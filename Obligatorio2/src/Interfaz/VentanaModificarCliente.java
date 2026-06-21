@@ -63,7 +63,7 @@ public class VentanaModificarCliente extends javax.swing.JFrame {
         lblAyuda = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
         Nombre.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
